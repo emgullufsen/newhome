@@ -1,0 +1,140 @@
+<html>
+
+<head>
+    
+    <style>
+        :root {
+            --eg-black: #19181A;
+            --eg-purple: #A16E83;
+            --eg-yellow: #CEBC81;
+            --eg-green: #479761;
+            --eg-grey: #B19F9E;
+        }
+
+        @font-face {
+            font-family: eg-lydian;
+            src: url('fonts/LYDIAN__.TTF');
+        }
+        .vis {
+            visibility: hidden;
+            height: 0px;
+            
+        }
+        .eg-banner {
+            text-align: center;
+            background-color: var(--eg-black);
+            color: var(--eg-yellow);
+            font-family: eg-lydian;
+        }
+
+        .eg-container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+            background-color: var(--eg-grey);
+            font-family: eg-lydian;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: auto auto auto;
+            background-color: var(--eg-purple);
+            padding: 10px;
+        }
+
+        .card-grid-item {
+            background-color: var(--eg-green);
+            padding: 20px;
+            margin: 5px;
+            border: solid;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+        .card-grid-item:hover {
+            transform: translate(-5px, -5px);
+            box-shadow: 6px 6px 10px 3px var(--eg-yellow);
+        }
+        .card-grid-image {
+            max-width: 300px;
+            max-height: 300px;
+            border-radius: 3px;
+        }
+
+        @media (min-width: 576px) {
+            .eg-container {
+                max-width: 540px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .eg-container {
+                max-width: 720px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .eg-container {
+                max-width: 960px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .eg-container {
+                max-width: 1140px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="eg-banner">
+        <h1>
+            ricky, squid, & wid
+        </h1>
+    </div>
+    <div class="eg-container">
+        <h2>Hey whatup - working on a new homepage &#x1F528;<br> -ricky</h2>
+        <div class="card-grid">
+            <div class="card-grid-item">
+                <img class="card-grid-image" src="images/ricky-sunglasses.svg" alt="rick in shades">
+                <h3>ricky</h3>
+                <h3>&#x2728;</h3>
+            
+            </div>
+            <div class="card-grid-item">
+                <img class="card-grid-image" src="images/squid-beach.svg" alt="squid at the beach">    
+                <h3>squid</h3>
+                <h3>&#x1F991;</h3>
+            </div>
+            <div class="card-grid-item">
+                <img class="card-grid-image" src="images/chewy-headshot.svg" alt="chewy in a poncho">    
+                <h3>wid</h3>
+                <h3>&#x1F43E;</h3>
+            </div>
+        </div>
+        <div class="vis" id="spot"><h1>what's up everyone!!!!&#x1f985;</h1></div>
+    </div>
+</body>
+<script>
+
+    var cards = document.getElementsByClassName('card-grid-item');
+    Array.prototype.forEach.call(cards, function(el) {
+        el.onmouseenter = function() {
+            var spot = document.querySelector('#spot');
+            spot.classList.remove('vis');
+        }
+        el.onmouseleave = function() {
+            var spot = document.querySelector('#spot');
+            spot.classList.add('vis');
+        }
+    
+    });
+    
+    
+    
+    
+</script>
+</html>
