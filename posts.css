@@ -51,6 +51,7 @@ a {
     max-width: 62vw;
 }
 
-.saltcaked-link {
-    color: var(--eg-yellow);
+.post-header {
+    border-bottom-style: solid;
+    border-bottom-color: var(--eg-galaxy-red);
 }
