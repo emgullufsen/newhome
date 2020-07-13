@@ -1,0 +1,69 @@
+<html>
+
+<head>
+    <title>
+        CGI Learning
+    </title>
+    <style>
+        .main {
+            border-style: dotted;
+            max-width: 50vw;
+            margin: auto;
+        }
+        .banner {
+            text-align: center;
+        }
+        .da-grid {
+            display: grid;
+            grid-template-columns: auto auto;
+        }
+
+        .da-grid-item {
+            padding: 0 10px 0 10px;
+        }
+        a:hover {
+            background-color: darkorchid;
+            color: white;
+            border-radius: 5px;   
+        }
+    </style>
+</head>
+
+<body>
+    <div class="banner">
+        <h1><a href="../newhome.html">Ricky, Squid, & Wid</a></h1>
+        <h2><a href="../saltcakedsmokestacks.html">Saltcaked Smokestacks</a></h2>
+    </div>
+    
+    <div class="main">
+        
+        <div class="da-grid">
+            <p class="da-grid-item">
+            
+                When you request the endpoint <a href="https://rickysquid.org/cgi-bin/barfback">/cgi-bin/barfback</a>
+                from this domain, <a href="https://httpd.apache.org/">Apache</a> uses <a href="https://www.w3.org/CGI/">CGI</a> 
+                to call an executable which was compiled using gcc from plain c++ source!
+                When the request comes in a process is spawned to run my program
+                code, which merely spits back (or barfs-back) the remote ip address of the user fed to it by the rules dictated by CGI.
+            </p>
+            
+
+            <p class="da-grid-item">
+                
+                 
+                Basically, when apache spins up a process to run my program, CGI determines a bunch of environment variables it sets for the 
+                child proc, and then also how STDIN and STDOUT are used for POST data and responses. Originally, I'd been barfing-back the 
+                query string from the URL, but I was open to code injection and need to escape html strings! Gotta research that more before 
+                I switch that back. Anyway, I also can get mails here now at this domain, under the first name in the title of the site.
+                
+            </p>
+
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>
