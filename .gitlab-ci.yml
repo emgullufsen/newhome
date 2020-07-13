@@ -1,3 +1,0 @@
-deploy-rickysquidsite:
-        script:
-                - echo "NOTHING -e"
