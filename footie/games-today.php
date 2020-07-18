@@ -88,8 +88,7 @@ foreach ($rj->matches as $m) {
 	$awayID = strval($m->awayTeam->id);
 	$homeName = $m->homeTeam->name;
 	$awayName = $m->awayTeam->name;
-	$homeURL = $teams_url . $homeID;
-	$awayURL = $teams_url . $awayID;
+	
 	$homeJSON = getTeamJSON($homeID);
 	$awayJSON = getTeamJSON($awayID);
 	$area = $m->competition->area;
