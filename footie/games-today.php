@@ -18,6 +18,16 @@
 	</style>
 </head>
 <body>
+	<a href="../newhome.html">
+        <h1>
+            ricky, squid, & wid
+        </h1>
+    </a>
+    <a href="../saltcakedsmokestacks.html">
+        <h1>
+            &#x1f6a2;SALTCAKED SMOKESTACKS
+        </h1>    
+    </a>
 <?php
 // thanks to football-data api!
 function hitAPI($suffix_url) {
