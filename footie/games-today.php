@@ -105,8 +105,6 @@ function getTeamJSON($identifier) {
 	return $r;
 }
 
-
-
 $qs_date = $_GET["DATE"] ?? date("Y-m-d");
 
 $day_before = date('Y-m-d', strtotime('-1 day', strtotime($qs_date)));
@@ -121,8 +119,13 @@ $fn = './json/football-data/matches/' . $qs_date . '.json';
 
 if (file_exists($fn)) {
 	$rj = json_decode(file_get_contents($fn));
-	// if count of matches is >0 and time() > utcDate and lastUpdated < utcDate
-	if ((count($rj->matches) > 0) and (time() > strtotime($rj->matches[0]->utcDate)) and (strtotime($rj->matches[0]->lastUpdated) < strtotime($rj->matches[0]->utcDate))){
+	$fileOld = (filemtime($fn) < strtotime('-10 minutes'));
+	$needsUpdate = false;
+	foreach ($rj->matches as $m){
+		$needsUpdate = ((time() > strtotime($m->utcDate)) and ($m->status !== "FINISHED"));
+	}
+	
+	if ($fileOld and $needsUpdate){
 		$rj = hitAPI($matches_suffix_plus_qs);
 		file_put_contents($fn, json_encode($rj));
 	}
