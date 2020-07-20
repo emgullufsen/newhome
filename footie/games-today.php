@@ -2,19 +2,62 @@
 <head>
 	<title>&#x26bd; Footie Today</title>
 	<style>
+		@font-face {
+			font-family: eg-scoreboard;
+			src: url('fonts/scoreboard.ttf');
+		}
+		a:link, a:visited {
+			text-decoration: none;
+			color: orange;
+		}
 		body {
 			text-align: center;
+			background-color: black;
+			color: orange;
+			text-shadow: 0px 0px 3px orange;
+			font-family: eg-scoreboard;
 		}	
+		.badge {
+			height: 50px;
+			padding: 7px;
+			margin: 5px;
+			border-radius: 10px;
+			background-color: white;
+		}
+		.flag {
+			height: 25px;
+		}
+		.prev-next-links {
+			margin: 15px;
+		}
+		.prev-link, .next-link {
+			border: solid 3px white;
+			
+			padding: 5px;
+		}
+		.prev-link:hover, .next-link:hover {
+			background-color: orange;
+			color: black;
+		}
+		/*.reg-cell {
+			font-family: serif;
+			background-color: white;
+			color: black;
+			text-shadow: none;
+		}*/
 		td, th {
 			text-align: center;
 			border-bottom-style: solid;
+			border-color: white;
 			
 		}
 		table {
 			border-collapse: collapse;
 			border-style: solid;
 			margin: auto;
+			border-color: white;
 		}
+		
 	</style>
 </head>
 <body>
@@ -62,32 +105,39 @@ function getTeamJSON($identifier) {
 	return $r;
 }
 
-$matches_suffix = '/matches?competitions=2021,2016,2001,2015,2002,2019,2014&';
-$df = 'dateFrom=';
-$dt = '&dateTo=';
+
+
 $qs_date = $_GET["DATE"] ?? date("Y-m-d");
+
 $day_before = date('Y-m-d', strtotime('-1 day', strtotime($qs_date)));
 $day_after = date('Y-m-d', strtotime('+1 day', strtotime($qs_date)));
-$qm = "?";
+
 $ruri = strtok($_SERVER['REQUEST_URI'], '?');
-$day_before_full = $ruri . $qm . http_build_query(array('DATE' => $day_before));
-$day_after_full = $ruri . $qm . http_build_query(array('DATE' => $day_after));
-$matches_suffix_plus_qs = $matches_suffix . $df . $qs_date . $dt . $qs_date;
+$day_before_full = $ruri . '?' . http_build_query(array('DATE' => $day_before));
+$day_after_full = $ruri . '?' . http_build_query(array('DATE' => $day_after));
+
+$matches_suffix_plus_qs = '/matches?competitions=2021,2016,2001,2015,2002,2019,2014&dateFrom=' . $qs_date . '&dateTo=' . $qs_date;
 $fn = './json/football-data/matches/' . $qs_date . '.json';
+
 if (file_exists($fn)) {
 	$rj = json_decode(file_get_contents($fn));
+	// if count of matches is >0 and time() > utcDate and lastUpdated < utcDate
+	if ((count($rj->matches) > 0) and (time() > strtotime($rj->matches[0]->utcDate)) and (strtotime($rj->matches[0]->lastUpdated) < strtotime($rj->matches[0]->utcDate))){
+		$rj = hitAPI($matches_suffix_plus_qs);
+		file_put_contents($fn, json_encode($rj));
+	}
 } else {
 	$rj = hitAPI($matches_suffix_plus_qs);
 	file_put_contents($fn, json_encode($rj));
 }
 echo <<<TBTH
 <h2>Soccer Games for $qs_date</h3>
-<div>
-<a href="$day_before_full">Prev. Day</a>
-<a href="$day_after_full">Next Day</a>
+<div class="prev-next-links">
+<a href="$day_before_full" class="prev-link">&#x2b05; Prev. Day</a>
+<a href="$day_after_full" class="next-link">Next Day &#x27a1;</a>
 </div>
 <table>
-<tr>
+<tr class="score-cell">
 <th>League</th><th>Home Team</th><th>Away Team</th><th>Score</th>
 </tr>
 TBTH;
@@ -105,20 +155,20 @@ foreach ($rj->matches as $m) {
 	$compName = $m->competition->name;
 	echo <<<SOME
 <tr>
-	<td>
-	<img src="$area->ensignUrl" alt="No Country Flag" style="width: 100px;"><br>
+	<td class="reg-cell">
 	$compName<br>
+	<img class="flag" src="$area->ensignUrl" alt="No Country Flag"><br>
 	$area->name
 	</td>
-	<td>
-	<img src="$homeJSON->crestUrl" style="height: 100px; width: 100px;" alt="No Badge"><br>
+	<td class="reg-cell">
+	<img class="badge" src="$homeJSON->crestUrl" alt="No Badge"><br>
 	$homeName
 	</td>
-	<td>
-	<img src="$awayJSON->crestUrl" style="height: 100px; width: 100px;" alt="No Badge"><br>
+	<td class="reg-cell">
+	<img class="badge" src="$awayJSON->crestUrl" alt="No Badge"><br>
 	$awayName
 	</td>
-	<td>
+	<td class="score-cell">
 	$homeS - $awayS
 	</td>
 </tr>
