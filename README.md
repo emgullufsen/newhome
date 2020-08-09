@@ -1,3 +1,3 @@
 # newhome
 ---
-my personal website - ricky
+my personal website - ricky g.
