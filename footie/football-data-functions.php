@@ -17,7 +17,9 @@ function hitAPI($base_url, $suffix_url = NULL, $headers) {
 	$resp_json = json_decode($resp);
 	return $resp_json;
 }
-
+function hitSecondAPIMatches($date) {
+	return hitAPI('https://api-football-v1.p.rapidapi.com/v2/fixtures/date/' . $date . '/514-330', '', $GLOBALS['HEADERS_SECOND_API']);
+}
 function hitMatchesFileOrAPI($file_descriptor, $matches_suffix_URL) {
     if (file_exists($file_descriptor)) {
         $rj = json_decode(file_get_contents($file_descriptor));
