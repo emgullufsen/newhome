@@ -49,7 +49,7 @@ function hitMatchesFileOrSecondAPI($date) {
         }
         
         if ($fileOld and $needsUpdate){
-            $rj = hitAPI($GLOBALS['EUROPA_LEAGUE_ENDPINT'], $date, $GLOBALS['HEADERS_SECOND_API']);
+            $rj = hitAPI($GLOBALS['EUROPA_LEAGUE_ENDPOINT'], $date, $GLOBALS['HEADERS_SECOND_API']);
             file_put_contents($fd, json_encode($rj));
         }
     } else {
