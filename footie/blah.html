@@ -1,6 +1,7 @@
 <html>
 
 <head>
+    <meta charset="utf-8">
     <style>
         img {
             max-height: 100px;
@@ -60,15 +61,45 @@
 
             let country_image = document.createElement('img');
             let league_image = document.createElement('img');
+            let homeTeam_image = document.createElement('img');
+            let awayTeam_image = document.createElement('img');
+
+            let country_figure = document.createElement('figure');
+            let league_figure = document.createElement('figure');
+            let homeTeam_figure = document.createElement('figure');
+            let awayTeam_figure = document.createElement('figure');
+
+            let country_figcaption = document.createElement('figcaption');
+            let league_figcaption = document.createElement('figcaption');
+            let homeTeam_figcaption = document.createElement('figcaption');
+            let awayTeam_figcaption = document.createElement('figcaption');
+
+            country_figcaption.innerHTML = item.league.country;
+            league_figcaption.innerHTML = item.league.name;
+            homeTeam_figcaption.innerHTML = item.homeTeam.team_name;
+            awayTeam_figcaption.innerHTML = item.awayTeam.team_name;
 
             country_image.src = item.league.flag;
             league_image.src = item.league.logo;
+            homeTeam_image.src = item.homeTeam.logo;
+            awayTeam_image.src = item.awayTeam.logo;
 
-            nc_0.appendChild(country_image);
-            nc_1.appendChild(league_image);
+            country_figure.appendChild(country_image);
+            country_figure.appendChild(country_figcaption);
 
-            nc_2.innerHTML = item.homeTeam.team_name;
-            nc_3.innerHTML = item.awayTeam.team_name;
+            league_figure.appendChild(league_image);
+            league_figure.appendChild(league_figcaption);
+
+            homeTeam_figure.appendChild(homeTeam_image);
+            homeTeam_figure.appendChild(homeTeam_figcaption);
+
+            awayTeam_figure.appendChild(awayTeam_image);
+            awayTeam_figure.appendChild(awayTeam_figcaption);
+
+            nc_0.appendChild(country_figure);
+            nc_1.appendChild(league_figure);
+            nc_2.appendChild(homeTeam_figure);
+            nc_3.appendChild(awayTeam_figure);
             nc_4.innerHTML = item.score.fulltime;
         }
         let us = new URLSearchParams(window.location.search);
@@ -98,12 +129,14 @@
         anchor_yesterday.appendChild(document.createTextNode("Previous Day"));
 
         button_div.appendChild(anchor_yesterday);
-        button_div.appendChild(anchor_tomorrow);
+        button_div.appendChild(anchor_tomorrow);        
 
         getMatchesFromSource(the_day).then(
             function (data) {
+                let fixs = data.api.fixtures;
+                fixs.sort((a, b) => (a.league_id < b.league_id) ? -1 : 1);
                 data.api.fixtures.forEach(fixture_func);
-                console.log(data);
+                console.log(fixs);
             }
         );
     </script>
