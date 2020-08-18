@@ -11,9 +11,18 @@
     --gray: #b4a090;
     --purple: #664355;
     --purple2: #704b5f;
+    --deeppurple: #4b1628;
     --lightgreen: #b7c0a4;
     --beygray: #ded7c7;
 
+}
+.eg-banner {
+    margin-left: auto;
+    color: var(--deeppurple);
+    text-align: center;
+}
+.eg-banner a {
+    color: inherit;
 }
 img {
     max-height: 50px;
