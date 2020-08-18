@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link href="scores-async.css" rel="stylesheet" type="text/css">
+    <script src="data-async.js"></script>
+</head>
+
+<body>
+
+    <div class="heyosup">
+        <div class="e_n_b">
+            <p>
+                This page makes async requests to
+                <a href="https://rapidapi.com/api-sports/api/api-football">api-football</a> using
+                <a href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API">javascript's fetch api</a>
+                and loads the JSON of matches data into a table.
+            </p>
+            <p>
+                Click on the buttons below to see a different day
+            </p>
+            <div id="day_buttons">
+
+            </div>
+        </div>
+
+        <table id="scoreboard_table">
+            <caption id="scoreboard_caption"></caption>
+            <thead>
+                <tr>
+                    <th>Country</th>
+                    <th>League</th>
+                    <th>Home Team</th>
+                    <th>Away Team</th>
+                    <th>Score</th>
+                </tr>
+
+            </thead>
+        </table>
+    </div>
+    <script>
+        
+        let t = document.getElementById("scoreboard_table");
+        let today = new Date();
+        
+        let tomorrow = new Date();
+        tomorrow.setDate(today.getDate() + 1);
+        
+        let yesterday = new Date();
+        yesterday.setDate(today.getDate() - 1);
+
+        getMatchesSetTableBody(today, t);
+
+        let button_div = document.getElementById("day_buttons");
+        let button_tomorrow = document.createElement('button');
+        let button_yesterday = document.createElement('button');
+
+        button_tomorrow.setAttribute('title', 'Next Day');
+        button_tomorrow.onclick = () => {
+            [today, tomorrow, yesterday].map(d => d.setDate(d.getDate() + 1))
+            getMatchesSetTableBody(today, t);
+        };
+        button_tomorrow.appendChild(document.createTextNode("Next Day \u27a1"));
+
+        button_yesterday.setAttribute('title', 'Previous Day');
+        button_yesterday.onclick = () => {
+            [today, tomorrow, yesterday].map(d => d.setDate(d.getDate() - 1))
+            getMatchesSetTableBody(today, t);
+        };
+        button_yesterday.appendChild(document.createTextNode("\u2b05 Previous Day"));
+
+        button_div.appendChild(button_yesterday);
+        button_div.appendChild(button_tomorrow);
+
+
+    </script>
+</body>
+
+</html>

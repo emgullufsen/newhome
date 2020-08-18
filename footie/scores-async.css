@@ -1,0 +1,88 @@
+:root {
+    --bluegray: #858792;
+    --bluegreen: #467175;
+    --bluegreen2: #384944;
+    --orange0: #bc2713;
+    --orange: #bb3c29;
+    --orange2: #c95833;
+    --pink0: #dc4e55;
+    --pink: #d76677;
+    --pink2: #9c5258;
+    --gray: #b4a090;
+    --purple: #664355;
+    --purple2: #704b5f;
+    --lightgreen: #b7c0a4;
+    --beygray: #ded7c7;
+
+}
+img {
+    max-height: 50px;
+}
+figure {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+figcaption {
+    font-size: small;
+}
+td,
+th {
+    text-align: center;
+
+}
+
+table {
+    border-collapse: collapse;
+    border-style: solid;
+    margin-top: 2%;
+    border-color: var(--purple);
+}
+#day_buttons {
+    text-align: center;
+    margin-bottom: 10px;
+}
+button {
+    color: black;
+    background-color: var(--pink);
+    border-color: var(--orange0);
+    border-style: solid;
+    margin-right: 10%;
+    margin-left: 10%;
+    box-shadow: 0px 0px 10px var(--purple);
+}
+button:active {
+    transform: translateY(3px);
+    box-shadow: none;
+}
+button:hover {
+    cursor: pointer;
+    background-color: var(--orange0);
+}
+.heyosup {
+    max-width: 62vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+.e_n_b {
+    border: solid;
+    border-color: var(--bluegreen2);
+    background-color: var(--lightgreen);
+    box-shadow: 7px 7px 5px var(--bluegreen);
+    width: 100%;
+}
+#scoreboard_table {
+    background-color: var(--beygray);
+    box-shadow: 7px 7px 5px var(--pink2);
+    width: 100%;
+}
+
+tr {
+    border-bottom-color: var(--bluegreen2);
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
+}
+caption {
+    font-size: xx-large;
+    color: var(--orange);
+    text-shadow: 0px 0px 5px var(--pink);
+}
