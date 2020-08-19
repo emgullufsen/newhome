@@ -23,6 +23,9 @@ body {
 .flag {
     height: 25px;
 }
+figure {
+    margin: 5px;
+}
 .prev-next-links {
     margin: 15px;
 }
