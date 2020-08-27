@@ -24,6 +24,15 @@
 .eg-banner a {
     color: inherit;
 }
+.eg-banner a {
+    background: linear-gradient(var(--pink0), 5%, var(--lightgreen));
+    border: 2px solid var(--bluegreen2);
+    text-decoration: none;
+}
+.eg-banner a:hover {
+    background: none;
+    background-color: var(--pink0);
+}
 img {
     max-height: 50px;
     max-width: 50px;
