@@ -39,9 +39,10 @@
                 background-size: 100% auto;
                 background-repeat: no-repeat;
                 width: 100%;
+                height: 100vw;
             }
             #temeraire {
-                width: 27vw;
+                height: 5%;
             }
             figure {
                 text-align: center;
@@ -52,6 +53,12 @@
             #rsw2 {
                 margin-bottom: 3%;
             }
+            @media (max-width: 500px) {
+                #mess, figcaption {
+                    font-size: small;
+                }
+            }
+            
         </style>
     </head>
     <body>
@@ -61,7 +68,7 @@
         </div>
         <div class="damain">
             <div class="damain-inner">
-                <p>
+                <p id="mess">
                     This RNC&#x1f418; is scary. They're gonna have democrats against the wall if there's four more years, ugh. 
                     On Tuesday (8/25) Nikola Joki&#x107; popped off big-time in the 1st then Jamaal Murray <i>really</i> got after it late, 
                     and the Nugs stay in the series against Utah, forcing a game six (if the NBA season continues that is). Been listening to 
