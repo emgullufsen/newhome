@@ -1,64 +1,7 @@
 <html>
 <head>
 	<title>&#x26bd; Footie Today</title>
-	<style>
-		@font-face {
-			font-family: eg-scoreboard;
-			src: url('fonts/scoreboard.ttf');
-		}
-		a:link, a:visited {
-			text-decoration: none;
-			color: orange;
-		}
-		body {
-			text-align: center;
-			background-color: black;
-			color: orange;
-			text-shadow: 0px 0px 3px orange;
-			font-family: eg-scoreboard;
-		}	
-		.badge {
-			height: 50px;
-			padding: 7px;
-			margin: 5px;
-			border-radius: 10px;
-			background-color: white;
-		}
-		.flag {
-			height: 25px;
-		}
-		.prev-next-links {
-			margin: 15px;
-		}
-		.prev-link, .next-link {
-			border: solid 3px white;
-			
-			padding: 5px;
-		}
-		.prev-link:hover, .next-link:hover {
-			background-color: orange;
-			color: black;
-		}
-		/*.reg-cell {
-			font-family: serif;
-			background-color: white;
-			color: black;
-			text-shadow: none;
-		}*/
-		td, th {
-			text-align: center;
-			border-bottom-style: solid;
-			border-color: white;
-			
-		}
-		table {
-			border-collapse: collapse;
-			border-style: solid;
-			margin: auto;
-			border-color: white;
-		}
-		
-	</style>
+	<link href="css/games-today-styles.css" rel="stylesheet">
 </head>
 <body>
 	<a href="../newhome.html">
@@ -71,39 +14,11 @@
             &#x1f6a2;SALTCAKED SMOKESTACKS
         </h1>    
     </a>
+
 <?php
+include 'games-today-description.html';
+include 'games-today-functions.php';
 // thanks to football-data api!
-function hitAPI($suffix_url) {
-	$base_url = 'https://api.football-data.org/v2/';
-	$endpoint = $base_url . $suffix_url;
-	$auth_header_array = array('X-AUTH-TOKEN: 1a65e8acccdb47949431186d2d4ea406');
-
-	$c = curl_init();
-	curl_setopt($c, CURLOPT_URL, $endpoint); 
-	curl_setopt($c, CURLOPT_HTTPHEADER, $auth_header_array); 
-	curl_setopt($c, CURLOPT_RETURNTRANSFER, true);
-	$resp = curl_exec($c);
-	$resp_json = json_decode($resp);
-	return $resp_json;
-}
-
-function getTeamJSON($identifier) {
-	$prefix = './json/football-data/teams/';
-	$suffix = '.json';
-	$teams_suffix = 'teams/';
-	$path = $prefix . $identifier . $suffix;
-	if (file_exists($path)){
-		$r = json_decode(file_get_contents($path));
-		if (empty($r->id)){
-			$r = hitAPI($teams_suffix . $identifier);
-		}
-	} else {
-		$r = hitAPI($teams_suffix . $identifier);
-	}
-	if (is_null($r->crestUrl) or empty($r->crestUrl)){ $r->crestUrl = "images/blank.png"; }-
-	file_put_contents($path, json_encode($r));
-	return $r;
-}
 
 $qs_date = $_GET["DATE"] ?? date("Y-m-d");
 
@@ -134,7 +49,7 @@ if (file_exists($fn)) {
 	file_put_contents($fn, json_encode($rj));
 }
 echo <<<TBTH
-<h2>Soccer Games for $qs_date</h3>
+<h2>Soccer Games for $qs_date</h2>
 <div class="prev-next-links">
 <a href="$day_before_full" class="prev-link">&#x2b05; Prev. Day</a>
 <a href="$day_after_full" class="next-link">Next Day &#x27a1;</a>
@@ -177,8 +92,8 @@ foreach ($rj->matches as $m) {
 </tr>
 SOME;
 }
-echo "</table>";
 ?>
+</table>
 </body>
 </html>
 
