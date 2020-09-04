@@ -1,7 +1,15 @@
 <html>
 <head>
+<<<<<<< HEAD
 	<title>&#x26bd; Footie Today</title>
 	<link href="css/games-today-styles.css" rel="stylesheet">
+=======
+	<meta charset="utf-8">
+	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%2290%22 font-size=%2290%22>&#x26bd;</text></svg>">
+    
+    <link href="style/games-today.css" rel="stylesheet" type="text/css">
+	<title>Footie Today</title>
+>>>>>>> 040b93c7c7db39ce632fa7d2942b4973027bc5b7
 </head>
 <body>
 	<a href="../newhome.html">
@@ -19,11 +27,23 @@
 include 'games-today-description.html';
 include 'games-today-functions.php';
 // thanks to football-data api!
+<<<<<<< HEAD
+=======
+require "football-data-functions.php";
+$base_url = 'https://api.football-data.org/v2/';
+$auth_header_array = array('X-AUTH-TOKEN: 1a65e8acccdb47949431186d2d4ea406');
+if (!is_null($_GET["DATE"])) {
+	$d_obj = DateTimeImmutable::createFromFormat('Y-m-d', $_GET["DATE"]);
+}
+else {
+	$d_obj = new DateTimeImmutable();
+}
+>>>>>>> 040b93c7c7db39ce632fa7d2942b4973027bc5b7
 
-$qs_date = $_GET["DATE"] ?? date("Y-m-d");
+$qs_date =  $d_obj->format('Y-m-d');
 
-$day_before = date('Y-m-d', strtotime('-1 day', strtotime($qs_date)));
-$day_after = date('Y-m-d', strtotime('+1 day', strtotime($qs_date)));
+$day_before = $d_obj->sub(new DateInterval('P1D'))->format('Y-m-d');
+$day_after = $d_obj->add(new DateInterval('P1D'))->format('Y-m-d');
 
 $ruri = strtok($_SERVER['REQUEST_URI'], '?');
 $day_before_full = $ruri . '?' . http_build_query(array('DATE' => $day_before));
@@ -32,22 +52,9 @@ $day_after_full = $ruri . '?' . http_build_query(array('DATE' => $day_after));
 $matches_suffix_plus_qs = '/matches?competitions=2021,2016,2001,2015,2002,2019,2014&dateFrom=' . $qs_date . '&dateTo=' . $qs_date;
 $fn = './json/football-data/matches/' . $qs_date . '.json';
 
-if (file_exists($fn)) {
-	$rj = json_decode(file_get_contents($fn));
-	$fileOld = (filemtime($fn) < strtotime('-10 minutes'));
-	$needsUpdate = false;
-	foreach ($rj->matches as $m){
-		$needsUpdate = ((time() > strtotime($m->utcDate)) and ($m->status !== "FINISHED"));
-	}
-	
-	if ($fileOld and $needsUpdate){
-		$rj = hitAPI($matches_suffix_plus_qs);
-		file_put_contents($fn, json_encode($rj));
-	}
-} else {
-	$rj = hitAPI($matches_suffix_plus_qs);
-	file_put_contents($fn, json_encode($rj));
-}
+$rj = hitMatchesFileOrAPI($fn, $matches_suffix_plus_qs, $auth_header_array);
+$rj_E = hitMatchesFileOrSecondAPI($qs_date);
+
 echo <<<TBTH
 <h2>Soccer Games for $qs_date</h2>
 <div class="prev-next-links">
@@ -92,6 +99,35 @@ foreach ($rj->matches as $m) {
 </tr>
 SOME;
 }
+<<<<<<< HEAD
+=======
+foreach ($rj_E->api->fixtures as $f) {
+	$fl = $f->league;
+	$a = $f->awayTeam;
+	$h = $f->homeTeam;
+	echo <<<SOME_E
+<tr>
+	<td class="reg-cell">
+	$fl->name<br>
+	<img class="flag" src="$fl->logo" alt="No Country Flag"><br>
+	$fl->name
+	</td>
+	<td class="reg-cell">
+	<img class="badge" src="$h->logo" alt="No Badge"><br>
+	$h->team_name
+	</td>
+	<td class="reg-cell">
+	<img class="badge" src="$a->logo" alt="No Badge"><br>
+	$a->team_name
+	</td>
+	<td class="score-cell">
+	$f->goalsHomeTeam - $f->goalsAwayTeam
+	</td>
+</tr>
+SOME_E;
+}
+echo "</table>";
+>>>>>>> 040b93c7c7db39ce632fa7d2942b4973027bc5b7
 ?>
 </table>
 </body>
