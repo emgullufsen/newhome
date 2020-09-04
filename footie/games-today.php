@@ -24,8 +24,6 @@
 include 'games-today-description.html';
 include 'games-today-functions.php';
 // thanks to football-data api!
-<<<<<<< HEAD
-=======
 require "football-data-functions.php";
 $base_url = 'https://api.football-data.org/v2/';
 $auth_header_array = array('X-AUTH-TOKEN: 1a65e8acccdb47949431186d2d4ea406');
@@ -35,7 +33,6 @@ if (!is_null($_GET["DATE"])) {
 else {
 	$d_obj = new DateTimeImmutable();
 }
->>>>>>> 040b93c7c7db39ce632fa7d2942b4973027bc5b7
 
 $qs_date =  $d_obj->format('Y-m-d');
 
@@ -96,8 +93,6 @@ foreach ($rj->matches as $m) {
 </tr>
 SOME;
 }
-<<<<<<< HEAD
-=======
 foreach ($rj_E->api->fixtures as $f) {
 	$fl = $f->league;
 	$a = $f->awayTeam;
@@ -124,7 +119,6 @@ foreach ($rj_E->api->fixtures as $f) {
 SOME_E;
 }
 echo "</table>";
->>>>>>> 040b93c7c7db39ce632fa7d2942b4973027bc5b7
 ?>
 </table>
 </body>
