@@ -1,12 +1,9 @@
 <html>
 <head>
-	<title>&#x26bd; Footie Today</title>
-	<link href="css/games-today-styles.css" rel="stylesheet">
+	<title>Games Today</title>
 	<meta charset="utf-8">
 	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%2290%22 font-size=%2290%22>&#x26bd;</text></svg>">
-    
-    <link href="style/games-today.css" rel="stylesheet" type="text/css">
-	<title>Footie Today</title>
+    	<link href="style/games-today.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<a href="../newhome.html">
