@@ -22,10 +22,9 @@
 
 <?php
 include 'games-today-description.html';
-include 'games-today-functions.php';
 // thanks to football-data api!
 require "football-data-functions.php";
-$base_url = 'https://api.football-data.org/v2/';
+
 $auth_header_array = array('X-AUTH-TOKEN: 1a65e8acccdb47949431186d2d4ea406');
 if (!is_null($_GET["DATE"])) {
 	$d_obj = DateTimeImmutable::createFromFormat('Y-m-d', $_GET["DATE"]);
