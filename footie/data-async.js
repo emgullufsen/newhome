@@ -62,8 +62,13 @@ function getMatchesSetTableBody(the_day, t) {
     let new_tb = document.createElement("tbody");
     new_tb.id = "scoreboard_table_body";
     if (t.tBodies.length > 0) {
-        let tb = t.tBodies[0];
-        t.removeChild(tb);
+        for (var i = 0; i++; i < t.tBodies.length){
+            var tb = t.tBodies[i];
+            t.removeChild(tb);
+            
+        }
+        //let tb = t.tBodies[0];
+        //t.removeChild(tb);
     }
     
     t.appendChild(new_tb);
