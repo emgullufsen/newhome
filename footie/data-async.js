@@ -59,19 +59,11 @@ function fixture_func(item) {
 
 function getMatchesSetTableBody(the_day, t) {
     t.caption.innerHTML = "Games for " + the_day.toDateString();
+    let tb = t.tBodies[0];
     let new_tb = document.createElement("tbody");
     new_tb.id = "scoreboard_table_body";
-    if (t.tBodies.length > 0) {
-        for (var i = 0; i++; i < t.tBodies.length){
-            var tb = t.tBodies[i];
-            t.removeChild(tb);
-            
-        }
-        //let tb = t.tBodies[0];
-        //t.removeChild(tb);
-    }
-    
-    t.appendChild(new_tb);
+
+    t.replaceChild(new_tb, tb);
     getMatchesFromSource(the_day).then(
         function (data) {
             let fixs = data.api.fixtures;

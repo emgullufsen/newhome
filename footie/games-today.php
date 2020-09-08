@@ -1,5 +1,7 @@
 <html>
 <head>
+	<title>&#x26bd; Footie Today</title>
+	<link href="css/games-today-styles.css" rel="stylesheet">
 	<meta charset="utf-8">
 	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%2290%22 font-size=%2290%22>&#x26bd;</text></svg>">
     
@@ -17,7 +19,10 @@
             &#x1f6a2;SALTCAKED SMOKESTACKS
         </h1>    
     </a>
+
 <?php
+include 'games-today-description.html';
+include 'games-today-functions.php';
 // thanks to football-data api!
 require "football-data-functions.php";
 $base_url = 'https://api.football-data.org/v2/';
@@ -45,7 +50,7 @@ $rj = hitMatchesFileOrAPI($fn, $matches_suffix_plus_qs, $auth_header_array);
 $rj_E = hitMatchesFileOrSecondAPI($qs_date);
 
 echo <<<TBTH
-<h2>Soccer Games for $qs_date</h3>
+<h2>Soccer Games for $qs_date</h2>
 <div class="prev-next-links">
 <a href="$day_before_full" class="prev-link">&#x2b05; Prev. Day</a>
 <a href="$day_after_full" class="next-link">Next Day &#x27a1;</a>
@@ -115,6 +120,7 @@ SOME_E;
 }
 echo "</table>";
 ?>
+</table>
 </body>
 </html>
 
