@@ -45,7 +45,6 @@
         }
 
         .eg-container {
-            width: 100%;
             padding-right: 15px;
             padding-left: 15px;
             margin-right: auto;
@@ -65,7 +64,14 @@
             /*background-color: var(--eg-purple);*/
             padding: 10px;
         }
-
+        @media (max-width: 1000px) {
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .eg-container {
+                max-width: unset!important;
+            }
+        }
         .card-grid-item {
             background-color: #4fa8c2;
             padding: 20px;
@@ -92,8 +98,6 @@
             border-bottom-width: 10px;
             border-color: var(--eg-galaxy-red);
         }
-
-        
     </style>
 </head>
 

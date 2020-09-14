@@ -37,7 +37,6 @@ a {
 }
 
 .eg-container {
-    width: 100%;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
@@ -49,17 +48,19 @@ a {
     border-color: var(--eg-yellow);
     max-width: 62vw;
 }
-
-.all-posts-list {
-    list-style-type: none;   
+@media (max-width: 1000px) {
+    .eg-container {
+        max-width: unset!important;
+    } 
 }
-
-.all-posts-list a:hover {
+table a:hover {
     
     text-shadow: 0px 0px 5px var(--eg-galaxy-red);
 }
-
-li {
-    margin: 5px auto;
-    font-family: 'Courier New', Courier, monospace;
+time {
+    padding-right: 2em;
+}
+td {
+    padding-top: 3px;
+    padding-bottom: 3px;
 }

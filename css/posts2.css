@@ -13,15 +13,38 @@
     --eg-offwhite: #f7f4e9;
     --eg-softpink: #ffddcc;
     --eg-grey: #B19F9E;
+    --bluegray: #858792;
+    --bluegreen: #467175;
+    --bluegreen2: #384944;
+    --orange0: #bc2713;
+    --orange: #bb3c29;
+    --orange2: #c95833;
+    --pink0: #dc4e55;
+    --pink: #d76677;
+    --pink2: #9c5258;
+    --gray: #b4a090;
+    --purple: #664355;
+    --purple2: #704b5f;
+    --deeppurple: #4b1628;
+    --lightgreen: #b7c0a4;
+    --beygray: #ded7c7;
 }
 
+@media (max-width: 1000px) {
+    .eg-container {
+        max-width: unset!important;
+    } 
+}
 body {
-    background-color: var(--eg-galaxy-blue);
+    background-color: var(--lightgreen);
 }
-
+blockquote {
+    border-left: solid 2px var(--eg-galaxy-purple);
+    padding-left: 5px;
+}
 @font-face {
     font-family: eg-lydian;
-    src: url('fonts/LYDIAN__.TTF');
+    src: url('../fonts/LYDIAN__.TTF');
 }
 
 .eg-banner a {
@@ -31,8 +54,8 @@ body {
 
 .eg-banner {
     text-align: center;
-    background-color: var(--eg-galaxy-blue);
-    color: var(--eg-yellow);
+    background-color: var(--lightgreen);
+    color: var(--eg-femmepurple);
     font-family: eg-lydian;
     margin-bottom: 20px;
 }
@@ -43,9 +66,10 @@ body {
     margin-right: auto;
     margin-left: auto;
     background-color: var(--eg-offwhite);
+    
     border-radius: 5px;
     border-style: solid;
-    border-color: var(--eg-yellow);
+    border-color: var(--pink);
     max-width: 62vw;
 }
 
