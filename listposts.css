@@ -46,11 +46,11 @@ a {
     border-radius: 5px;
     border-style: solid;
     border-color: var(--eg-yellow);
-    max-width: 62vw;
+    max-width: 50em;
 }
-@media (max-width: 1000px) {
+@media screen and (max-width: 1000px) {
     .eg-container {
-        max-width: unset!important;
+        width: 90%;
     } 
 }
 table a:hover {
@@ -63,4 +63,12 @@ time {
 td {
     padding-top: 3px;
     padding-bottom: 3px;
+}
+
+#twitter-logoo {
+    height: 4em;
+}
+
+#eg-footer {
+    text-align: center;
 }
