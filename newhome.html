@@ -66,9 +66,7 @@
             padding: 10px;
         }
         @media (max-width: 1000px) {
-            .card-grid {
-                grid-template-columns: 1fr;
-            }
+            
             .eg-container {
                 width: 90%;
             }
@@ -105,13 +103,25 @@
             border-color: var(--eg-galaxy-red);
         }
         .explainer {
-            background-color: var(--eg-yellow);
+            background-color: var(--eg-grey);
             padding: 2px 1em 2px 1em;
             
             border-radius: 5px;
             text-align: center;
             margin-left: 10px;
             margin-right: 10px;
+        }
+        .r-l {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+        .r-l p {
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 0;
+            margin-bottom: 3px;
+            width: 70%;
+
         }
     </style>
 </head>
@@ -128,10 +138,14 @@
     </div>
     <div class="eg-container">
         <div class="explainer">
-            <p>click ricky for my blog postings which are mostly about soccer and books. </p>
+            <p><u>THANKS FOR VISITING!</u></p>
+            <div class="r-l">
+                <p>my blog<br>&#x25bc;</p>
 
-            <p>click wid to go to his instagram - he's a young'un so it's all about the 'gram... </p>
-            <p>THANKS FOR VISITING!</p>
+                <p>chewy's 'gram<br>&#x25bc;</p>
+            
+            </div>
+            
         </div>
         <div class="card-grid">
             <a href="saltcakedsmokestacks.html">
