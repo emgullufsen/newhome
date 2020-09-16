@@ -81,16 +81,21 @@
             text-align: center;
             border-radius: 5px;
             border-color: var(--eg-galaxy-purple);
+            transition-property: background-color, border-color, transform, color;
+            transition-timing-function: ease;
+            transition-duration: 0.3s;
         }
 
         .card-grid-item:hover {
             transform: translate(-5px, -5px);
             box-shadow: 6px 6px 10px 3px var(--eg-femmepurple);
-            
+            background-color: var(--eg-softpink);
+            border-color: var(--eg-galaxy-red);
+            color: var(--eg-galaxy-red);
         }
 
         .card-header {
-            color: black;
+            
         }
 
         .card-grid-image {
@@ -99,19 +104,34 @@
             border-bottom-width: 10px;
             border-color: var(--eg-galaxy-red);
         }
+        .explainer {
+            background-color: var(--eg-yellow);
+            padding: 2px 1em 2px 1em;
+            
+            border-radius: 5px;
+            text-align: center;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
     </style>
 </head>
 
 <body>
     <div class="eg-banner">
+        
         <h1>
+        <a href="">
             rik & wid
+        </a>
         </h1>
+    
     </div>
     <div class="eg-container">
-        <div>
-            <p>Hey everybody we're ricky and chewy (aka wid). click me for my blog postings which are mostly about soccer games or books. 
-                click on chewy to go to his instagram - he's a young'un it's all about the 'gram for lil chew... THANKS FOR VISITING!</p>
+        <div class="explainer">
+            <p>click ricky for my blog postings which are mostly about soccer and books. </p>
+
+            <p>click wid to go to his instagram - he's a young'un so it's all about the 'gram... </p>
+            <p>THANKS FOR VISITING!</p>
         </div>
         <div class="card-grid">
             <a href="saltcakedsmokestacks.html">
