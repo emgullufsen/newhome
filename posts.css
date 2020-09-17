@@ -38,15 +38,19 @@ body {
 }
 
 .eg-container {
-    padding-right: 15px;
-    padding-left: 15px;
     margin-right: auto;
     margin-left: auto;
     background-color: var(--eg-offwhite);
     border-radius: 5px;
     border-style: solid;
     border-color: var(--eg-yellow);
-    max-width: 62vw;
+    max-width: 60em;
+}
+
+@media screen and (max-width: 750px){
+    .eg-container {
+        width: 100%;
+    }
 }
 
 .post-header {

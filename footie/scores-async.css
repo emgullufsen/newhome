@@ -77,9 +77,15 @@ button:hover {
     background-color: var(--orange0);
 }
 .heyosup {
-    max-width: 62vw;
+    max-width: 100em;
+    width: 70%;
     margin-left: auto;
     margin-right: auto;
+}
+@media screen and (max-width: 750px){
+    .heyosup {
+        width: 100%;
+    }
 }
 .e_n_b {
     border: solid;
@@ -92,6 +98,7 @@ button:hover {
     background-color: var(--beygray);
     box-shadow: 7px 7px 5px var(--pink2);
     width: 100%;
+    table-layout: fixed;
 }
 
 tr {
