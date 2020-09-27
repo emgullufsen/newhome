@@ -1,0 +1,184 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%2290%22 font-size=%2290%22>&#x1f4fb;</text></svg>">
+    <title>Quod Erat Demonstratum</title>
+    <link href="../css/posts2.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@rickygully">
+    <meta name="twitter:creator" content="@rickygully">
+    <meta name="twitter:title" content="Unicode learning">
+    <meta name="twitter:description"
+        content="You can make the end-of-proof symbol from math in Unicode">
+    <meta name="twitter:image" content="">
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <div class="eg-banner">
+        <h1>
+            <a href="../newhome.html">
+                ricky & chucho
+            </a>
+        </h1>
+        <h1 class="saltcaked-link">
+            <a href="../saltcakedsmokestacks.html">
+                &#x1f6a2;SALTCAKED SMOKESTACKS
+            </a>
+        </h1>
+    </div>
+    <div class="eg-container">
+        <h2 class="post-header">SICP Exercise 3.25</h2>
+        <p>Here's a pattern typical of SICP - the "message-passing" style. The table is a computational object 
+            with local state variables and procedures, together with a dispatch procedure that selects the appropriate
+             local operation.
+        </p>
+        <script src="https://gist.github.com/emgullufsen/181dbdf34ee9492ce0d831acc960cfb0.js"></script>
+        <h2 class="post-header">&#x220e; Tombstone</h2>
+        <p>That black square thing in the title is the "Tombstone", end-of-proof, or "Halmos" symbol. There are a ton of cool unicode characters - like the integral sign,
+             circle letters and others below.
+        </p>
+        <ul>
+            <li>
+                Ace of dimes - &#x1f0c1;
+
+            </li>
+            <li>
+                Joker card - &#x1f0cf;
+            </li>
+            
+            <li>
+                Scorpio - &#x264f;
+            </li>
+            <li>
+                Fleuron - &#x2766;
+            </li>
+            <li>
+                Umbrella - &#x2614;
+            </li>
+            <li>
+                Comet - &#x2604;
+            </li>
+            <li>
+                Hysteresis - &#x238e;
+            </li>
+            
+            
+            
+        </ul>
+        <p>
+            These below here are a shit-ton of dope-ass mahfuckin' unicode characters I liked from the list!
+            Buncha cool ways to do an "e" plus like skull and crossbones, hazard symbols, playing cards, et cetera!
+            Like I said lots of cool characters!!!!!!
+        </p>
+        <p>
+            
+            
+            &#x24ba; &#x24c7; &#x24be; &#x24b8; &#x2620; &#x25c9;
+            &#x2200; &#x213c; &#x2042;
+            &#x25A6;
+            &#x25A3;
+            &#x25C8;
+            &#x25CA;
+            &#x25B0;
+            &#x222b;
+            &#x2202;
+            &#x221e;
+            &#x21ed;
+            &#x2182;
+            &#x2188;
+            &#x2189;
+            &#x2116;
+            &#x2135;
+            &#x2141;
+            &#x2140;
+            &#x2130;
+            &#x2133;
+            &#x2133;
+            &#x2121;
+            &#x2103;
+            &#x212e;
+            &#x212f;
+            &#x2147;
+            &#x2147;
+            &#x2147;
+            &#x2145;
+            &#x214b;
+            &#x24a0;
+            &#x03bb;
+            &#x2207;
+            &#x2311;
+            &#x2301;
+            &#x2370;
+            &#x2363;
+            &#x2307;
+            &#x2328;
+            &#x2318;
+            &#x2386;
+            &#x2221;
+            &#x2222;
+            &#x2207;
+            &#x2209;
+            &#x2218;
+            &#x226c;
+            &#x225b;
+            &#x22be;
+            &#x2205;
+            &#x225b;
+            &#x22c9;
+            &#x22b6;
+            &#x22c6;
+            &#x21af;
+            &#x2055;
+            &#x205c;
+            &#x;
+        </p>
+        <p>
+            &#x23b2;<br>
+            &#x23b3;
+        </p>
+        <p>
+            <u>&#x2116;&#x24f7;</u>
+        </p>
+        <p>
+            <i>&#x2116;&#x24ff;</i><br>
+            &#x2116;&#x2494;<br>
+            &#x2116;&#x24a0;<br>
+            &#x2116;&#x2462;<br>
+            &#x2116;&#x24f4;<br>
+            
+        </p>
+        <p>
+            &#x212e;
+            &#x212f;
+            &#x2147;
+            &#x2140;
+            &#x2130;
+            &#x24ba;
+        </p>
+        <p>here I cycle through some of the "e" styles</p>
+        <p id="thespot">
+
+        </p>
+    </div>
+</body>
+<script>
+//document.getElementById("thespot").innerHTML = "\u212e"
+const l = ['\u212e',
+           '\u212f',
+           '\u2147',
+            '\u2140',
+            '\u2130',
+            '\u24ba'];
+function loo() {
+    document.getElementById("thespot").innerHTML = l[Math.floor(Date.now()/1000 % l.length)];
+    setTimeout(loo, 1000);
+}
+loo();
+</script>
+</html>
