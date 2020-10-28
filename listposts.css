@@ -42,7 +42,7 @@ a {
     margin-right: auto;
     margin-left: auto;
     background-color: var(--eg-offwhite);
-    font-family: eg-lydian;
+    /*font-family: eg-lydian;*/
     border-radius: 5px;
     border-style: solid;
     border-color: var(--eg-yellow);
