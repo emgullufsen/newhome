@@ -1,0 +1,1323 @@
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>today's matches - clojure</title>
+	<link rel="icon" type="image/svg+xml" href="https://rickysquid.org/images/clojure-logo.svg" />
+    	<meta name="twitter:card" content="summary_large_image" />
+    	<meta name="twitter:site" content="@rickygully" />
+    	<meta name="twitter:creator" content="@rickygully" />
+    	<meta name="twitter:title" content="clojure footy" />
+    	<meta name="twitter:description" content="yet another front-end to the football-data api, this time written in clojure" />
+	<meta name="twitter:image" content="https://rickysquid.org/images/clojure-footy-screenshot-resized.png" />
+<style>
+	.eric-wrapper {
+		width: 70%;
+		max-width: 60em;
+		margin: 0 auto;
+		position: relative;
+		min-height: 100%;
+		height: auto;
+
+	}
+
+	.hidey {
+		max-height: 0;
+		
+	}
+
+	@media screen and (max-width:865px) {
+		.eric-wrapper {
+			width: 100%
+		}
+	}
+
+	td {
+		vertical-align: top;
+		background-size: contain;
+		background-repeat: no-repeat;
+		border: solid 4px;
+	}
+
+	.redski {
+		color: red;
+	}
+
+	ul {
+		overflow: hidden;
+		max-height: 100vh;
+		background-color: rgba(255,255,255,0.7);
+		transition-property: max-height;
+		transition-timing-function: ease;
+		transition-duration: 1s;
+		
+	}
+	img {
+		max-width: 100px;
+	}
+	figure {
+		background-color: white;
+		text-align: center;
+	}
+	.button-cellz {
+		border: none;
+	}
+	.scoreSpot {
+		border: none;
+		
+	}
+</style>
+<script>
+	// accepts button and shows/hides ul in same tr as that button
+	function setHidey(but) {
+		const h = 'hidey';
+		var ulToChangeList = but.parentElement.parentElement.getElementsByTagName('ul');
+		for (var i = 0; i < ulToChangeList.length; i++) {
+			var el = ulToChangeList[i];
+			if (el.classList.contains(h)) {
+				el.classList.remove(h);
+			}
+			else {
+				el.classList.add(h);
+			}
+		}
+	}
+</script>
+</head>
+<body>
+	<div class="eric-wrapper">
+		<h1>ricky y chooch</h1>
+		<a id="yesterday" href="?gameDate=2020-11-05">Yesterday's Games</a>
+		<a id="tomorrow" href="?gameDate=2020-11-07">Tomorrow's Games</a>
+		<a onclick="this.classList.add('redski')">Turn Red</a>
+		<table>
+			<tbody><tr>
+					<td class="homeTeam" style="background-color: Blue; border-style: double;">
+						<figure class="homeFigure">
+							<img class="homeTeamImage" alt="home team image" src="https://crests.football-data.org/397.svg" />
+							<figcaption class="homeTeamCaption">Brighton &amp; Hove Albion FC</figcaption>
+						</figure>
+						<ul class="hidey homeTeamPlayers"><li>
+								<span>Maty Ryan</span>
+							</li><li>
+								<span>Jason Steele</span>
+							</li><li>
+								<span>Christian Walton</span>
+							</li><li>
+								<span>Adam Webster</span>
+							</li><li>
+								<span>Dan Burn</span>
+							</li><li>
+								<span>Ben White</span>
+							</li><li>
+								<span>Joël Veltman</span>
+							</li><li>
+								<span>Lewis Dunk</span>
+							</li><li>
+								<span>Shane Duffy</span>
+							</li><li>
+								<span>Lars Dendoncker</span>
+							</li><li>
+								<span>Bernardo</span>
+							</li><li>
+								<span>Tariq Lamptey</span>
+							</li><li>
+								<span>Adam Lallana</span>
+							</li><li>
+								<span>Solomon March</span>
+							</li><li>
+								<span>Pascal Groß</span>
+							</li><li>
+								<span>Davy Pröpper</span>
+							</li><li>
+								<span>Jayson Molumby</span>
+							</li><li>
+								<span>Max Sanders</span>
+							</li><li>
+								<span>Yves Bissouma</span>
+							</li><li>
+								<span>Leandro Trossard</span>
+							</li><li>
+								<span>Peter Gwargis</span>
+							</li><li>
+								<span>Alexis Mac Allister</span>
+							</li><li>
+								<span>Florin Andone</span>
+							</li><li>
+								<span>Danny Welbeck</span>
+							</li><li>
+								<span>José Izquierdo</span>
+							</li><li>
+								<span>Alireza Jahanbakhsh</span>
+							</li><li>
+								<span>Neal Maupay</span>
+							</li><li>
+								<span>Aaron Connolly</span>
+							</li><li>
+								<span>Andi Zeqiri</span>
+							</li><li>
+								<span>Steven Alzate</span>
+							</li><li>
+								<span>Graham Potter</span>
+							</li></ul>
+					</td>
+					<td class="scoreSpot"> - </td>
+					<td class="awayTeam" style="background-color: Claret; border-color: Sky;">
+						<figure class="awayFigure">
+							<img alt="away team image" class="awayTeamImage" src="https://crests.football-data.org/328.svg" />
+							<figcaption class="awayTeamCaption">Burnley FC</figcaption>
+						</figure>
+						<ul class="hidey awayTeamPlayers"><li>
+								<span>Nick Pope</span>
+							</li><li>
+								<span>Will Norris</span>
+							</li><li>
+								<span>Bailey Peacock-Farrell</span>
+							</li><li>
+								<span>James Tarkowski</span>
+							</li><li>
+								<span>Ben Gibson</span>
+							</li><li>
+								<span>Erik Pieters</span>
+							</li><li>
+								<span>Benjamin Mee</span>
+							</li><li>
+								<span>Matthew Lowton</span>
+							</li><li>
+								<span>Kevin Long</span>
+							</li><li>
+								<span>Charlie Taylor</span>
+							</li><li>
+								<span>Phil Bardsley</span>
+							</li><li>
+								<span>Jimmy Dunne</span>
+							</li><li>
+								<span>Anthony Driscoll-Glennon</span>
+							</li><li>
+								<span>Jóhann Berg Guðmundsson</span>
+							</li><li>
+								<span>Josh Brownhill</span>
+							</li><li>
+								<span>Robbie Brady</span>
+							</li><li>
+								<span>Ashley Westwood</span>
+							</li><li>
+								<span>Jack Cork</span>
+							</li><li>
+								<span>Dale Stephens</span>
+							</li><li>
+								<span>Dwight McNeil</span>
+							</li><li>
+								<span>Josh Benson</span>
+							</li><li>
+								<span>Matěj Vydra</span>
+							</li><li>
+								<span>Jay Rodriguez</span>
+							</li><li>
+								<span>Ashley Barnes</span>
+							</li><li>
+								<span>Chris Wood</span>
+							</li><li>
+								<span>Sean Dyche</span>
+							</li></ul>
+					</td>
+					<td class="button-cellz"><button onclick="setHidey(this)">Show Rosters</button></td>
+				</tr><tr>
+					<td class="homeTeam" style="background-color: Blue; border-style: double;">
+						<figure class="homeFigure">
+							<img class="homeTeamImage" alt="home team image" src="https://crests.football-data.org/715.svg" />
+							<figcaption class="homeTeamCaption">Cardiff City FC</figcaption>
+						</figure>
+						<ul class="hidey homeTeamPlayers"><li>
+								<span>Alex Smithies</span>
+							</li><li>
+								<span>Joe Day</span>
+							</li><li>
+								<span>Dillon Phillips</span>
+							</li><li>
+								<span>Sean Morrison</span>
+							</li><li>
+								<span>Joe Bennett</span>
+							</li><li>
+								<span>Soul Bamba</span>
+							</li><li>
+								<span>Curtis Nelson</span>
+							</li><li>
+								<span>Will Vaulks</span>
+							</li><li>
+								<span>Jordi Osei-Tutu</span>
+							</li><li>
+								<span>Greg Cunningham</span>
+							</li><li>
+								<span>Filip Benković</span>
+							</li><li>
+								<span>Joel Bagan</span>
+							</li><li>
+								<span>Sheyi Ojo</span>
+							</li><li>
+								<span>Leandro Bacuna</span>
+							</li><li>
+								<span>Kieffer Moore</span>
+							</li><li>
+								<span>Marlon Pack</span>
+							</li><li>
+								<span>Joe Ralls</span>
+							</li><li>
+								<span>Mark Harris</span>
+							</li><li>
+								<span>Robert Glatzel</span>
+							</li><li>
+								<span>Harry Wilson</span>
+							</li><li>
+								<span>Tavio Kouakou</span>
+							</li><li>
+								<span>Kieron Evans</span>
+							</li><li>
+								<span>Josh Murphy</span>
+							</li><li>
+								<span>Isaac Vassell</span>
+							</li><li>
+								<span>Junior Hoilett</span>
+							</li><li>
+								<span>Lee Tomlin</span>
+							</li><li>
+								<span>Gavin Whyte</span>
+							</li><li>
+								<span>Neil Harris</span>
+							</li></ul>
+					</td>
+					<td class="scoreSpot"> - </td>
+					<td class="awayTeam" style="background-color: Red; border-style: double;">
+						<figure class="awayFigure">
+							<img alt="away team image" class="awayTeamImage" src="https://crests.football-data.org/387.svg" />
+							<figcaption class="awayTeamCaption">Bristol City FC</figcaption>
+						</figure>
+						<ul class="hidey awayTeamPlayers"><li>
+								<span>Jojo Wollacott</span>
+							</li><li>
+								<span>Daniel Bentley</span>
+							</li><li>
+								<span>Rene Gilmartin</span>
+							</li><li>
+								<span>Max O’Leary</span>
+							</li><li>
+								<span>Alfie Mawson</span>
+							</li><li>
+								<span>Tomáš Kalas</span>
+							</li><li>
+								<span>Nathan Baker</span>
+							</li><li>
+								<span>Taylor Moore</span>
+							</li><li>
+								<span>Jay Dasilva</span>
+							</li><li>
+								<span>Zak Vyner</span>
+							</li><li>
+								<span>Ashley Williams</span>
+							</li><li>
+								<span>Jack Hunt</span>
+							</li><li>
+								<span>Ádam Nagy</span>
+							</li><li>
+								<span>Steven Sessegnon</span>
+							</li><li>
+								<span>Joe Williams</span>
+							</li><li>
+								<span>Callum O'Dowda</span>
+							</li><li>
+								<span>Tyreeq Bakinson</span>
+							</li><li>
+								<span>Liam Walsh</span>
+							</li><li>
+								<span>Tommy Rowe</span>
+							</li><li>
+								<span>Chris Brunt</span>
+							</li><li>
+								<span>Han-Noah Massengo</span>
+							</li><li>
+								<span>Ryley Towler</span>
+							</li><li>
+								<span>Andreas Weimann</span>
+							</li><li>
+								<span>Chris Martin</span>
+							</li><li>
+								<span>Jamie Paterson</span>
+							</li><li>
+								<span>Famara Diédhiou</span>
+							</li><li>
+								<span>Freddie Hinds</span>
+							</li><li>
+								<span>Antoine Semenyo</span>
+							</li><li>
+								<span>Nahki Wells</span>
+							</li><li>
+								<span>Dean Holden</span>
+							</li></ul>
+					</td>
+					<td class="button-cellz"><button onclick="setHidey(this)">Show Rosters</button></td>
+				</tr><tr>
+					<td class="homeTeam" style="background-color: Yellow; border-color: Green;">
+						<figure class="homeFigure">
+							<img class="homeTeamImage" alt="home team image" src="https://crests.football-data.org/1920.svg" />
+							<figcaption class="homeTeamCaption">Fortuna Sittard</figcaption>
+						</figure>
+						<ul class="hidey homeTeamPlayers"><li>
+								<span>Yanick van Osch</span>
+							</li><li>
+								<span>Alexei Coşelev</span>
+							</li><li>
+								<span>Tom Hendriks</span>
+							</li><li>
+								<span>Joshua Wehking</span>
+							</li><li>
+								<span>Roel Janssen</span>
+							</li><li>
+								<span>Ben Rienstra</span>
+							</li><li>
+								<span>Jarosław Jach</span>
+							</li><li>
+								<span>Branislav Ňinaj</span>
+							</li><li>
+								<span>Martin Angha</span>
+							</li><li>
+								<span>Clint Essers</span>
+							</li><li>
+								<span>George Cox</span>
+							</li><li>
+								<span>Patrik Raitanen</span>
+							</li><li>
+								<span>Mike van Beijnen</span>
+							</li><li>
+								<span>Emil Hansson</span>
+							</li><li>
+								<span>Samuel Moutoussamy</span>
+							</li><li>
+								<span>Tesfaldet Tekie</span>
+							</li><li>
+								<span>Jorrit Smeets</span>
+							</li><li>
+								<span>Lisandro Semedo</span>
+							</li><li>
+								<span>Zian Flemming</span>
+							</li><li>
+								<span>Nassim El Ablak</span>
+							</li><li>
+								<span>Adnan Ugur</span>
+							</li><li>
+								<span>Llazaros Rota</span>
+							</li><li>
+								<span>Sebastian Polter</span>
+							</li><li>
+								<span>Mats Seuntjens</span>
+							</li><li>
+								<span>Djibril Dianessy</span>
+							</li><li>
+								<span>Kevin Hofland</span>
+							</li></ul>
+					</td>
+					<td class="scoreSpot"> - </td>
+					<td class="awayTeam" style="background-color: Blue; border-style: double;">
+						<figure class="awayFigure">
+							<img alt="away team image" class="awayTeamImage" src="https://crests.football-data.org/684.svg" />
+							<figcaption class="awayTeamCaption">PEC Zwolle</figcaption>
+						</figure>
+						<ul class="hidey awayTeamPlayers"><li>
+								<span>Mike Hauptmeijer</span>
+							</li><li>
+								<span>Michael Zetterer</span>
+							</li><li>
+								<span>Xavier Mous</span>
+							</li><li>
+								<span>Thomas Lam</span>
+							</li><li>
+								<span>Clint Leemans</span>
+							</li><li>
+								<span>Bram van Polen</span>
+							</li><li>
+								<span>Sam Kersten</span>
+							</li><li>
+								<span>Destan Bajselmani</span>
+							</li><li>
+								<span>Jarno Westerman</span>
+							</li><li>
+								<span>Anthony Dekono Lulandu</span>
+							</li><li>
+								<span>Rav van den Berg</span>
+							</li><li>
+								<span>Kenneth Paal</span>
+							</li><li>
+								<span>Rico Strieder</span>
+							</li><li>
+								<span>Mustafa Saymak</span>
+							</li><li>
+								<span>Yuta Nakayama</span>
+							</li><li>
+								<span>Thomas van den Belt</span>
+							</li><li>
+								<span>Eliano Reijnders</span>
+							</li><li>
+								<span>Marc-Olivier Doué</span>
+							</li><li>
+								<span>Slobodan Tedić</span>
+							</li><li>
+								<span>Dean Huiberts</span>
+							</li><li>
+								<span>Immanuel Pherai</span>
+							</li><li>
+								<span>Reza Ghoochannejhad</span>
+							</li><li>
+								<span>Pelle Clement</span>
+							</li><li>
+								<span>Mike van Duinen</span>
+							</li><li>
+								<span>Jesper Drost</span>
+							</li><li>
+								<span>Sai van Wermeskerken</span>
+							</li><li>
+								<span>Samir Lagsir</span>
+							</li><li>
+								<span>John Stegeman</span>
+							</li></ul>
+					</td>
+					<td class="button-cellz"><button onclick="setHidey(this)">Show Rosters</button></td>
+				</tr><tr>
+					<td class="homeTeam" style="background-color: Green; border-style: double;">
+						<figure class="homeFigure">
+							<img class="homeTeamImage" alt="home team image" src="https://crests.football-data.org/12.svg" />
+							<figcaption class="homeTeamCaption">SV Werder Bremen</figcaption>
+						</figure>
+						<ul class="hidey homeTeamPlayers"><li>
+								<span>Jiří Pavlenka</span>
+							</li><li>
+								<span>Stefanos Kapino</span>
+							</li><li>
+								<span>Eduardo Dos Santos Haesler</span>
+							</li><li>
+								<span>Ömer Toprak</span>
+							</li><li>
+								<span>Miloš Veljković</span>
+							</li><li>
+								<span>Theodor Gebre Selassie</span>
+							</li><li>
+								<span>Niklas Moisander</span>
+							</li><li>
+								<span>Ludwig Augustinsson</span>
+							</li><li>
+								<span>Marco Friedl</span>
+							</li><li>
+								<span>Felix Agu</span>
+							</li><li>
+								<span>Leonardo Bittencourt</span>
+							</li><li>
+								<span>Kevin Möhwald</span>
+							</li><li>
+								<span>Patrick Erras</span>
+							</li><li>
+								<span>Maximilian Eggestein</span>
+							</li><li>
+								<span>Milot Rashica</span>
+							</li><li>
+								<span>Christian Groß</span>
+							</li><li>
+								<span>Romano Schmid</span>
+							</li><li>
+								<span>Jean-Manuel Mbom</span>
+							</li><li>
+								<span>Ilia Gruev</span>
+							</li><li>
+								<span>Tahith Chong</span>
+							</li><li>
+								<span>Yūya Ōsako</span>
+							</li><li>
+								<span>Niclas Füllkrug</span>
+							</li><li>
+								<span>Davie Selke</span>
+							</li><li>
+								<span>Josh Sargent</span>
+							</li><li>
+								<span>Nick Woltemade</span>
+							</li><li>
+								<span>Oscar Schönfelder</span>
+							</li><li>
+								<span>Florian Kohfeldt</span>
+							</li></ul>
+					</td>
+					<td class="scoreSpot"> - </td>
+					<td class="awayTeam" style="background-color: Red; border-style: double;">
+						<figure class="awayFigure">
+							<img alt="away team image" class="awayTeamImage" src="https://crests.football-data.org/1.svg" />
+							<figcaption class="awayTeamCaption">1. FC Köln</figcaption>
+						</figure>
+						<ul class="hidey awayTeamPlayers"><li>
+								<span>Timo Horn</span>
+							</li><li>
+								<span>Ron-Robert Zieler</span>
+							</li><li>
+								<span>Julian Krahl</span>
+							</li><li>
+								<span>Jonas Hector</span>
+							</li><li>
+								<span>Frederik Sørensen</span>
+							</li><li>
+								<span>Jorge Meré</span>
+							</li><li>
+								<span>Jannes-Kilian Horn</span>
+							</li><li>
+								<span>João Pereira Queirós</span>
+							</li><li>
+								<span>Ismail Jakobs</span>
+							</li><li>
+								<span>Rafael Czichos</span>
+							</li><li>
+								<span>Kingsley Ehizibue</span>
+							</li><li>
+								<span>Sebastiaan Bornauw</span>
+							</li><li>
+								<span>Benno Schmitz</span>
+							</li><li>
+								<span>Robert Voloder</span>
+							</li><li>
+								<span>Marco Höger</span>
+							</li><li>
+								<span>Salih Özcan</span>
+							</li><li>
+								<span>Christian Clemens</span>
+							</li><li>
+								<span>Dominick Drexler</span>
+							</li><li>
+								<span>Ellyes Skhiri</span>
+							</li><li>
+								<span>Ondrej Duda</span>
+							</li><li>
+								<span>Marius Wolf</span>
+							</li><li>
+								<span>Elvis Rexhbecaj</span>
+							</li><li>
+								<span>Florian Kainz</span>
+							</li><li>
+								<span>Noah Katterbach</span>
+							</li><li>
+								<span>Sava Cestic</span>
+							</li><li>
+								<span>Sebastian Andersson</span>
+							</li><li>
+								<span>Anthony Modeste</span>
+							</li><li>
+								<span>Dimitris Limnios</span>
+							</li><li>
+								<span>Toluwalas Arokodare</span>
+							</li><li>
+								<span>Jan Thielmann</span>
+							</li><li>
+								<span>Tim Lemperle</span>
+							</li><li>
+								<span>Markus Gisdol</span>
+							</li></ul>
+					</td>
+					<td class="button-cellz"><button onclick="setHidey(this)">Show Rosters</button></td>
+				</tr><tr>
+					<td class="homeTeam" style="background-color: Green; border-color: Black;">
+						<figure class="homeFigure">
+							<img class="homeTeamImage" alt="home team image" src="https://crests.football-data.org/471.svg" />
+							<figcaption class="homeTeamCaption">US Sassuolo Calcio</figcaption>
+						</figure>
+						<ul class="hidey homeTeamPlayers"><li>
+								<span>Gianluca Pegolo</span>
+							</li><li>
+								<span>Andrea Consigli</span>
+							</li><li>
+								<span>Stefano Turati</span>
+							</li><li>
+								<span>Jeremy Toljan</span>
+							</li><li>
+								<span>Filippo Romagna</span>
+							</li><li>
+								<span>Vlad Chiricheş</span>
+							</li><li>
+								<span>Federico Peluso</span>
+							</li><li>
+								<span>Rogério</span>
+							</li><li>
+								<span>Gianmarco Ferrari</span>
+							</li><li>
+								<span>Marlon</span>
+							</li><li>
+								<span>Kaan Ayhan</span>
+							</li><li>
+								<span>Mert Müldür</span>
+							</li><li>
+								<span>Giorgos Kiriakopoulos</span>
+							</li><li>
+								<span>Manuel Locatelli</span>
+							</li><li>
+								<span>Francesco Magnanelli</span>
+							</li><li>
+								<span>Federico Ricci</span>
+							</li><li>
+								<span>Filip Đuričić</span>
+							</li><li>
+								<span>Hamed Traoré</span>
+							</li><li>
+								<span>Jérémie Boga</span>
+							</li><li>
+								<span>Pedro Obiang</span>
+							</li><li>
+								<span>Maxime López</span>
+							</li><li>
+								<span>Mehdi Bourabia</span>
+							</li><li>
+								<span>Lukáš Haraslín</span>
+							</li><li>
+								<span>Gregoire Defrel</span>
+							</li><li>
+								<span>Domenico Berardi</span>
+							</li><li>
+								<span>Francesco Caputo</span>
+							</li><li>
+								<span>Nicolás Schiappacase</span>
+							</li><li>
+								<span>Giacomo Raspadori</span>
+							</li><li>
+								<span>Roberto De Zerbi</span>
+							</li></ul>
+					</td>
+					<td class="scoreSpot"> - </td>
+					<td class="awayTeam" style="background-color: White; border-color: Black;">
+						<figure class="awayFigure">
+							<img alt="away team image" class="awayTeamImage" src="https://crests.football-data.org/115.svg" />
+							<figcaption class="awayTeamCaption">Udinese Calcio</figcaption>
+						</figure>
+						<ul class="hidey awayTeamPlayers"><li>
+								<span>Simone Scuffet</span>
+							</li><li>
+								<span>Manuel Gasparini</span>
+							</li><li>
+								<span>Nicolas</span>
+							</li><li>
+								<span>Juan Musso</span>
+							</li><li>
+								<span>Rodrigo Becão</span>
+							</li><li>
+								<span>Sebastian De Maio</span>
+							</li><li>
+								<span>Samir</span>
+							</li><li>
+								<span>Bram Nuytinck</span>
+							</li><li>
+								<span>Kevin Bonifazi</span>
+							</li><li>
+								<span>Hidde ter Avest</span>
+							</li><li>
+								<span>Sebastian Prödl</span>
+							</li><li>
+								<span>Marvin Zeegelaar</span>
+							</li><li>
+								<span>Nahuel Molina</span>
+							</li><li>
+								<span>Rodrigo de Paul</span>
+							</li><li>
+								<span>Jens Stryger Larsen</span>
+							</li><li>
+								<span>Rolando Mandragora</span>
+							</li><li>
+								<span>Mato Jajalo</span>
+							</li><li>
+								<span>Mamadou Coulibaly</span>
+							</li><li>
+								<span>Walace</span>
+							</li><li>
+								<span>Thomas Ouwejan</span>
+							</li><li>
+								<span>Roberto Pereyra</span>
+							</li><li>
+								<span>Jean-Victor Makengo</span>
+							</li><li>
+								<span>Tolgay Ali Arslan</span>
+							</li><li>
+								<span>Ignacio Pussetto</span>
+							</li><li>
+								<span>Kevin Lasagna</span>
+							</li><li>
+								<span>Ilija Nestorovski</span>
+							</li><li>
+								<span>Cristo González</span>
+							</li><li>
+								<span>Stefano Okaka</span>
+							</li><li>
+								<span>Gerard Deulofeu</span>
+							</li><li>
+								<span>Fernando Forestieri</span>
+							</li><li>
+								<span>Petar Micin</span>
+							</li><li>
+								<span>Luca Gotti</span>
+							</li></ul>
+					</td>
+					<td class="button-cellz"><button onclick="setHidey(this)">Show Rosters</button></td>
+				</tr><tr>
+					<td class="homeTeam" style="background-color: Red; border-style: double;">
+						<figure class="homeFigure">
+							<img class="homeTeamImage" alt="home team image" src="https://crests.football-data.org/340.svg" />
+							<figcaption class="homeTeamCaption">Southampton FC</figcaption>
+						</figure>
+						<ul class="hidey homeTeamPlayers"><li>
+								<span>Fraser Forster</span>
+							</li><li>
+								<span>Alex McCarthy</span>
+							</li><li>
+								<span>Harry Lewis</span>
+							</li><li>
+								<span>Jannik Vestergaard</span>
+							</li><li>
+								<span>Kyle Walker-Peters</span>
+							</li><li>
+								<span>Ryan Bertrand</span>
+							</li><li>
+								<span>Jack Stephens</span>
+							</li><li>
+								<span>Jan Bednarek</span>
+							</li><li>
+								<span>Sam McQueen</span>
+							</li><li>
+								<span>Mohammed Salisu</span>
+							</li><li>
+								<span>Yan Valery</span>
+							</li><li>
+								<span>Jake Vokins</span>
+							</li><li>
+								<span>James Ward-Prowse</span>
+							</li><li>
+								<span>Oriol Romeu</span>
+							</li><li>
+								<span>Nathan Redmond</span>
+							</li><li>
+								<span>Ibrahima Diallo</span>
+							</li><li>
+								<span>Moussa Djénepo</span>
+							</li><li>
+								<span>Stuart Armstrong</span>
+							</li><li>
+								<span>William Smallbone</span>
+							</li><li>
+								<span>Che Adams</span>
+							</li><li>
+								<span>Theo Walcott</span>
+							</li><li>
+								<span>Danny Ings</span>
+							</li><li>
+								<span>Shane Long</span>
+							</li><li>
+								<span>Michael Obafemi</span>
+							</li><li>
+								<span>Dan Nlundulu</span>
+							</li><li>
+								<span>Nathan Tella</span>
+							</li><li>
+								<span>Ralph Hasenhüttl</span>
+							</li></ul>
+					</td>
+					<td class="scoreSpot"> - </td>
+					<td class="awayTeam" style="background-color: Black; border-style: double;">
+						<figure class="awayFigure">
+							<img alt="away team image" class="awayTeamImage" src="https://crests.football-data.org/67.svg" />
+							<figcaption class="awayTeamCaption">Newcastle United FC</figcaption>
+						</figure>
+						<ul class="hidey awayTeamPlayers"><li>
+								<span>Mark Gillespie</span>
+							</li><li>
+								<span>Karl Darlow</span>
+							</li><li>
+								<span>Martin Dúbravka</span>
+							</li><li>
+								<span>Fabian Schär</span>
+							</li><li>
+								<span>Emil Krafth</span>
+							</li><li>
+								<span>Achraf Lazaar</span>
+							</li><li>
+								<span>Jamal Lewis</span>
+							</li><li>
+								<span>Paul Dummett</span>
+							</li><li>
+								<span>Jamaal Lascelles</span>
+							</li><li>
+								<span>Ciaran Clark</span>
+							</li><li>
+								<span>DeAndre Yedlin</span>
+							</li><li>
+								<span>Javier Manquillo</span>
+							</li><li>
+								<span>Federico Fernández</span>
+							</li><li>
+								<span>Rolando Aarons</span>
+							</li><li>
+								<span>Sean Longstaff</span>
+							</li><li>
+								<span>Isaac Hayden</span>
+							</li><li>
+								<span>Jonjo Shelvey</span>
+							</li><li>
+								<span>Matt Ritchie</span>
+							</li><li>
+								<span>Christian Atsu</span>
+							</li><li>
+								<span>Jacob Murphy</span>
+							</li><li>
+								<span>Jeff Hendrick</span>
+							</li><li>
+								<span>Ryan Fraser</span>
+							</li><li>
+								<span>Miguel Almirón</span>
+							</li><li>
+								<span>Matthew Longstaff</span>
+							</li><li>
+								<span>Henri Saivet</span>
+							</li><li>
+								<span>Dwight Gayle</span>
+							</li><li>
+								<span>Andy Carroll</span>
+							</li><li>
+								<span>Callum Wilson</span>
+							</li><li>
+								<span>Allan Saint-Maximin</span>
+							</li><li>
+								<span>Joelinton</span>
+							</li><li>
+								<span>Steve Bruce</span>
+							</li></ul>
+					</td>
+					<td class="button-cellz"><button onclick="setHidey(this)">Show Rosters</button></td>
+				</tr><tr>
+					<td class="homeTeam" style="background-color: White; border-color: Green;">
+						<figure class="homeFigure">
+							<img class="homeTeamImage" alt="home team image" src="https://crests.football-data.org/285.svg" />
+							<figcaption class="homeTeamCaption">Elche CF</figcaption>
+						</figure>
+						<ul class="hidey homeTeamPlayers"><li>
+								<span>Edgar Badía</span>
+							</li><li>
+								<span>Diego Rodríguez</span>
+							</li><li>
+								<span>Antonio Barragán</span>
+							</li><li>
+								<span>Youssouf Koné</span>
+							</li><li>
+								<span>Miguel Ángel</span>
+							</li><li>
+								<span>Josema Sánche</span>
+							</li><li>
+								<span>Dani Calvo</span>
+							</li><li>
+								<span>Diego González</span>
+							</li><li>
+								<span>Gonzalo Verdú</span>
+							</li><li>
+								<span>Juan Sánchez Miño</span>
+							</li><li>
+								<span>Omenuke Mfulu</span>
+							</li><li>
+								<span>Gerard Barri</span>
+							</li><li>
+								<span>Steven Lucumí</span>
+							</li><li>
+								<span>Raúl Guti</span>
+							</li><li>
+								<span>Luismi</span>
+							</li><li>
+								<span>Fidel</span>
+							</li><li>
+								<span>Iván Marcone</span>
+							</li><li>
+								<span>Emiliano Rigoni</span>
+							</li><li>
+								<span>Guido Carrillo</span>
+							</li><li>
+								<span>Lucas Boyé</span>
+							</li><li>
+								<span>Josán Fernández</span>
+							</li><li>
+								<span>Pere Milla</span>
+							</li><li>
+								<span>Nino</span>
+							</li><li>
+								<span>Tete Morente</span>
+							</li><li>
+								<span>Víctor Rodríguez</span>
+							</li><li>
+								<span>Jonatan Carmona Alamo</span>
+							</li><li>
+								<span>Diego Bri</span>
+							</li><li>
+								<span>Jorge Almirón</span>
+							</li></ul>
+					</td>
+					<td class="scoreSpot"> - </td>
+					<td class="awayTeam" style="background-color: Sky; border-color: /;">
+						<figure class="awayFigure">
+							<img alt="away team image" class="awayTeamImage" src="https://crests.football-data.org/558.svg" />
+							<figcaption class="awayTeamCaption">RC Celta de Vigo</figcaption>
+						</figure>
+						<ul class="hidey awayTeamPlayers"><li>
+								<span>Iván Villar</span>
+							</li><li>
+								<span>Sergio Álvarez</span>
+							</li><li>
+								<span>Rubén Blanco</span>
+							</li><li>
+								<span>Iago Domínguez</span>
+							</li><li>
+								<span>Álvaro Fernández</span>
+							</li><li>
+								<span>Néstor Araujo</span>
+							</li><li>
+								<span>Joseph Aidoo</span>
+							</li><li>
+								<span>David Costas</span>
+							</li><li>
+								<span>Jorge Sáenz</span>
+							</li><li>
+								<span>Jeison Murillo</span>
+							</li><li>
+								<span>Juncà</span>
+							</li><li>
+								<span>Hugo Mallo</span>
+							</li><li>
+								<span>Diego Pampín</span>
+							</li><li>
+								<span>Lucas Olaza</span>
+							</li><li>
+								<span>Kevin Vázquez</span>
+							</li><li>
+								<span>Sergio Carreira</span>
+							</li><li>
+								<span>José Fontán</span>
+							</li><li>
+								<span>Nolito</span>
+							</li><li>
+								<span>Renato Tapia</span>
+							</li><li>
+								<span>Denís Suárez</span>
+							</li><li>
+								<span>Okay Yokuşlu</span>
+							</li><li>
+								<span>Fran Beltrán</span>
+							</li><li>
+								<span>Emre Mor</span>
+							</li><li>
+								<span>Miguel Baeza</span>
+							</li><li>
+								<span>Gabriel Veiga</span>
+							</li><li>
+								<span>Iago Aspas</span>
+							</li><li>
+								<span>Santi Mina</span>
+							</li><li>
+								<span>Brais Méndez</span>
+							</li><li>
+								<span>Miguel Rodríguez</span>
+							</li><li>
+								<span>Óscar García</span>
+							</li></ul>
+					</td>
+					<td class="button-cellz"><button onclick="setHidey(this)">Show Rosters</button></td>
+				</tr><tr>
+					<td class="homeTeam" style="background-color: Blue; border-style: double;">
+						<figure class="homeFigure">
+							<img class="homeTeamImage" alt="home team image" src="https://crests.football-data.org/576.svg" />
+							<figcaption class="homeTeamCaption">RC Strasbourg Alsace</figcaption>
+						</figure>
+						<ul class="hidey homeTeamPlayers"><li>
+								<span>Eiji Kawashima</span>
+							</li><li>
+								<span>Matz Sels</span>
+							</li><li>
+								<span>Bingourou Kamara</span>
+							</li><li>
+								<span>Lionel Carole</span>
+							</li><li>
+								<span>Lamine Koné</span>
+							</li><li>
+								<span>Alexander Djiku</span>
+							</li><li>
+								<span>Kenny Lala</span>
+							</li><li>
+								<span>Anthony Caci</span>
+							</li><li>
+								<span>Stefan Mitrović</span>
+							</li><li>
+								<span>Mohamed Simakan</span>
+							</li><li>
+								<span>Ibrahima Sissoko</span>
+							</li><li>
+								<span>Habib Diallo</span>
+							</li><li>
+								<span>Jean-Ricner Bellegarde</span>
+							</li><li>
+								<span>Jean-Eudes Aholou</span>
+							</li><li>
+								<span>Kévin Zohi</span>
+							</li><li>
+								<span>Ismael Aaneba</span>
+							</li><li>
+								<span>Sanjin Prcić</span>
+							</li><li>
+								<span>Mahamé Siby</span>
+							</li><li>
+								<span>Mehdi Chahiri</span>
+							</li><li>
+								<span>Adrien Lebeau</span>
+							</li><li>
+								<span>Ludovic Ajorque</span>
+							</li><li>
+								<span>Lebo Mothiba</span>
+							</li><li>
+								<span>Adrien Thomasson</span>
+							</li><li>
+								<span>Dimitri Liénard</span>
+							</li><li>
+								<span>Idriss Saâdi</span>
+							</li><li>
+								<span>Abdul Majeed Waris</span>
+							</li><li>
+								<span>Thierry Laurey</span>
+							</li><li>
+								<span>Fabien Lefèvre</span>
+							</li></ul>
+					</td>
+					<td class="scoreSpot"> - </td>
+					<td class="awayTeam" style="background-color: White; border-color: Blue;">
+						<figure class="awayFigure">
+							<img alt="away team image" class="awayTeamImage" src="https://crests.football-data.org/516.svg" />
+							<figcaption class="awayTeamCaption">Olympique de Marseille</figcaption>
+						</figure>
+						<ul class="hidey awayTeamPlayers"><li>
+								<span>Steve Mandanda</span>
+							</li><li>
+								<span>Yohann Pelé</span>
+							</li><li>
+								<span>Simon Ngapandouetnbu</span>
+							</li><li>
+								<span>Yūto Nagatomo</span>
+							</li><li>
+								<span>Hiroki Sakai</span>
+							</li><li>
+								<span>Boubacar Kamara</span>
+							</li><li>
+								<span>Jordan Amavi</span>
+							</li><li>
+								<span>Christopher Rocchia</span>
+							</li><li>
+								<span>Duje Ćaleta-Car</span>
+							</li><li>
+								<span>Álvaro González</span>
+							</li><li>
+								<span>Leonardo Balerdi</span>
+							</li><li>
+								<span>Lucas Perrin</span>
+							</li><li>
+								<span>Richecard Richard</span>
+							</li><li>
+								<span>Aaron Kamardin</span>
+							</li><li>
+								<span>Pape Gueye</span>
+							</li><li>
+								<span>Kevin Strootman</span>
+							</li><li>
+								<span>Saîf-Eddine Khaoui</span>
+							</li><li>
+								<span>Mickaël Cuisance</span>
+							</li><li>
+								<span>Morgan Sanson</span>
+							</li><li>
+								<span>Valentin Rongier</span>
+							</li><li>
+								<span>Florian Chabrolle</span>
+							</li><li>
+								<span>Alexandre Phliponeau</span>
+							</li><li>
+								<span>Cheick Souaré</span>
+							</li><li>
+								<span>Ugo Bertelli</span>
+							</li><li>
+								<span>Nassim Ahmed</span>
+							</li><li>
+								<span>Jores Rahou</span>
+							</li><li>
+								<span>Florian Thauvin</span>
+							</li><li>
+								<span>Dimitri Payet</span>
+							</li><li>
+								<span>Valère Germain</span>
+							</li><li>
+								<span>Kostas Mitroglou</span>
+							</li><li>
+								<span>Nemanja Radonjić</span>
+							</li><li>
+								<span>Darío Benedetto</span>
+							</li><li>
+								<span>Luis Henrique</span>
+							</li><li>
+								<span>Marley Aké</span>
+							</li><li>
+								<span>André Villas-Boas</span>
+							</li></ul>
+					</td>
+					<td class="button-cellz"><button onclick="setHidey(this)">Show Rosters</button></td>
+				</tr><tr>
+					<td class="homeTeam" style="background-color: Blue; border-style: double;">
+						<figure class="homeFigure">
+							<img class="homeTeamImage" alt="home team image" src="https://crests.football-data.org/5568.svg" />
+							<figcaption class="homeTeamCaption">Os Belenenses Futebol</figcaption>
+						</figure>
+						<ul class="hidey homeTeamPlayers"><li>
+								<span>Guilherme Oliveira</span>
+							</li><li>
+								<span>André Moreira</span>
+							</li><li>
+								<span>Stanislav Kritsyuk</span>
+							</li><li>
+								<span>João Monteiro</span>
+							</li><li>
+								<span>Henrique Adriano</span>
+							</li><li>
+								<span>Chima Akas</span>
+							</li><li>
+								<span>Francisco Varela</span>
+							</li><li>
+								<span>Pedro Álvaro</span>
+							</li><li>
+								<span>Ruben Lima</span>
+							</li><li>
+								<span>Gonçalo Silva</span>
+							</li><li>
+								<span>Luís Silva</span>
+							</li><li>
+								<span>Diogo Cabral</span>
+							</li><li>
+								<span>Eduardo Kau</span>
+							</li><li>
+								<span>Tomás Ribeiro</span>
+							</li><li>
+								<span>Nilton Varela</span>
+							</li><li>
+								<span>Samir Banjai</span>
+							</li><li>
+								<span>Richard</span>
+							</li><li>
+								<span>Thibang Phete</span>
+							</li><li>
+								<span>Afonso Taira</span>
+							</li><li>
+								<span>Bruno Ramires</span>
+							</li><li>
+								<span>Petit</span>
+							</li><li>
+								<span>Tiago Esgaio</span>
+							</li><li>
+								<span>Cauê</span>
+							</li><li>
+								<span>Afonso Sousa</span>
+							</li><li>
+								<span>Danny Henriques</span>
+							</li><li>
+								<span>Francisco Teixeira</span>
+							</li><li>
+								<span>Mateo Cassierra</span>
+							</li><li>
+								<span>Silvestre Varela</span>
+							</li><li>
+								<span>Dieguinho</span>
+							</li><li>
+								<span>Alhassane Keita</span>
+							</li><li>
+								<span>Miguel Cardoso</span>
+							</li><li>
+								<span>Licá</span>
+							</li><li>
+								<span>Edi Semedo</span>
+							</li><li>
+								<span>Robinho Vieira</span>
+							</li></ul>
+					</td>
+					<td class="scoreSpot"> - </td>
+					<td class="awayTeam" style="background-color: Green; border-style: double;">
+						<figure class="awayFigure">
+							<img alt="away team image" class="awayTeamImage" src="https://crests.football-data.org/496.svg" />
+							<figcaption class="awayTeamCaption">Rio Ave FC</figcaption>
+						</figure>
+						<ul class="hidey awayTeamPlayers"><li>
+								<span>Léo Vieira</span>
+							</li><li>
+								<span>Pawel Kieszek</span>
+							</li><li>
+								<span>Aderllan Santos</span>
+							</li><li>
+								<span>Ivo Pinto</span>
+							</li><li>
+								<span>Junio</span>
+							</li><li>
+								<span>Fábio Coentrão</span>
+							</li><li>
+								<span>Toni Borevković</span>
+							</li><li>
+								<span>Pedro Amaral</span>
+							</li><li>
+								<span>Nélson Monte</span>
+							</li><li>
+								<span>Nadjack</span>
+							</li><li>
+								<span>João Pedro Loureiro Costa</span>
+							</li><li>
+								<span>Nando Pijnaker</span>
+							</li><li>
+								<span>Nikola Jambor</span>
+							</li><li>
+								<span>Filipe Augusto</span>
+							</li><li>
+								<span>Matheus Reis</span>
+							</li><li>
+								<span>Tarantini</span>
+							</li><li>
+								<span>Pelé</span>
+							</li><li>
+								<span>Chico Geraldes</span>
+							</li><li>
+								<span>Diego Lopes</span>
+							</li><li>
+								<span>Mehdi Taremi</span>
+							</li><li>
+								<span>Lucas Piazon</span>
+							</li><li>
+								<span>Carlos Mané</span>
+							</li><li>
+								<span>Said Ahmed Said</span>
+							</li><li>
+								<span>André Pereira</span>
+							</li><li>
+								<span>Ronan Jeronimo</span>
+							</li><li>
+								<span>Gelson Dala</span>
+							</li><li>
+								<span>Bruno Moreira</span>
+							</li><li>
+								<span>Nuno Santos</span>
+							</li><li>
+								<span>Gabrielzinho</span>
+							</li><li>
+								<span>Ryōtarō Meshino</span>
+							</li><li>
+								<span>Augusto Gama</span>
+							</li><li>
+								<span>Fernando Mario Silva</span>
+							</li></ul>
+					</td>
+					<td class="button-cellz"><button onclick="setHidey(this)">Show Rosters</button></td>
+				</tr></tbody>
+		</table>
+	</div>
+
+</body>
+
+
+</html>
