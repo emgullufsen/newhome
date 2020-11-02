@@ -19,42 +19,47 @@ async function getMatchesFromSource(d) {
 
 function fixture_func(item) {
     const cell_datas = [
-        {  
-            ih : item.league.country,
-            s : item.league.flag,
+        {
+            ih: item.league.country,
+            s: item.league.flag,
         },
         {
-            ih : item.league.name,
-            s : item.league.logo,
+            ih: item.league.name,
+            s: item.league.logo,
         },
         {
-            ih : item.homeTeam.team_name,
-            s : item.homeTeam.logo,
+            ih: item.homeTeam.team_name,
+            s: item.homeTeam.logo,
         },
         {
-            ih : item.awayTeam.team_name,
-            s : item.awayTeam.logo
+            ih: item.awayTeam.team_name,
+            s: item.awayTeam.logo
         }
     ];
-
+    var datcomp = item.event_date.slice(0, 10);
+    
     let tably = document.getElementById("scoreboard_table");
     let tbod = tably.tBodies[0];
-    let new_row = tbod.insertRow(-1);
+    console.log(tbod.dataset.footydate == datcomp);
+    if (tbod.dataset.footydate == datcomp) {
+        let new_row = tbod.insertRow(-1);
 
-    cell_datas.forEach((cd, i) => {
-        let nc = new_row.insertCell(i);
-        let ci = document.createElement('img');
-        let cf = document.createElement('figure');
-        let cfig = document.createElement('figcaption');
-        cfig.innerHTML = cd.ih;
-        ci.src = cd.s;
-        cf.appendChild(ci);
-        cf.appendChild(cfig);
-        nc.appendChild(cf);
-    });
+        cell_datas.forEach((cd, i) => {
+            let nc = new_row.insertCell(i);
+            let ci = document.createElement('img');
+            let cf = document.createElement('figure');
+            let cfig = document.createElement('figcaption');
+            cfig.innerHTML = cd.ih;
+            ci.src = cd.s;
+            cf.appendChild(ci);
+            cf.appendChild(cfig);
+            nc.appendChild(cf);
+        });
 
-    let nc_4 = new_row.insertCell(4);
-    nc_4.innerHTML = item.score.fulltime;
+        let nc_4 = new_row.insertCell(4);
+        nc_4.innerHTML = item.score.fulltime;
+    }
+
 }
 
 function getMatchesSetTableBody(the_day, t) {
@@ -62,6 +67,16 @@ function getMatchesSetTableBody(the_day, t) {
     let tb = t.tBodies[0];
     let new_tb = document.createElement("tbody");
     new_tb.id = "scoreboard_table_body";
+    var dayday = the_day.getDate().toString();
+    if (dayday.length == 1) {
+        dayday = "0" + dayday;
+    }
+    var monthmonth = (the_day.getMonth() + 1).toString();
+    if (monthmonth.length == 1){
+        monthmonth = "0" + monthmonth;
+    }
+    var footydate = the_day.getFullYear().toString() + '-' + monthmonth + '-' + dayday;
+    new_tb.setAttribute('data-footydate', footydate);
 
     t.replaceChild(new_tb, tb);
     getMatchesFromSource(the_day).then(
