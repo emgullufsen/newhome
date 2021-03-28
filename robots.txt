@@ -1,0 +1,3 @@
+#allowing all bots for now -rik
+User-agent: *
+Allow: /
