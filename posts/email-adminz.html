@@ -1,0 +1,76 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%2290%22 font-size=%2290%22>📧</text></svg>">
+    <title>Postfix Administration</title>
+    <link href="../css/posts2.css" rel="stylesheet" type="text/css">
+    <link href="../css/email-adminz-post.css" rel="stylesheet" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@rickygully">
+    <meta name="twitter:creator" content="@rickygully">
+    <meta name="twitter:title" content="Email Server Log File Analysis">
+    <meta name="twitter:description"
+        content="Check Postfix Logs for Trouble">
+    <meta name="twitter:image" content="">
+    <style>
+        
+    </style>
+</head>
+
+<body>
+    <div class="eg-banner">
+        <h1>
+            <a href="../newhome.html">
+                ricky & chucho
+            </a>
+        </h1>
+        <h1 class="saltcaked-link">
+            <a href="../saltcakedsmokestacks.html">
+                &#x1f6a2;SALTCAKED SMOKESTACKS
+            </a>
+        </h1>
+    </div>
+    <div class="eg-container">
+        <h2 class="post-header">📧 Postfix Log File Analysis</h2>
+        <p>
+            I run postfix on this server to hustle mail pieces to and from rickysquid.org. 
+            The default postfix settings are pretty secure, but before I really hardened my 
+            instances' config, lo, I was used as a spammer gateway and ended up on a spammer list 
+            (<a href="http://www.sorbs.net/">SORBS</a>, if you are curious). Google, Outlook, and the like 
+            check these lists and so I was blocked from sending to all my GMail and Office 365 homies.
+            Getting a domain removed from this list actually wasn't too bad, but still I am 
+            now paranoid about ending up on there again. I have tried to make every adjustment necessary (strictest possible relay/recipient/sender restrictions, use of TLS).
+            Also I just now put <code>smtpd_client_auth_rate_limit = 1</code> in my main.cf file 
+            to limit AUTH attempts to 1 per minute and I'm already seeing brute-force 
+            fools hitting this limit in my logs.
+        </p>
+        <figure>
+            <img src="../images/auth-limit.PNG">
+            <figcaption>failed login attempt</figcaption>
+        </figure>
+        <p>
+            Speaking of logs - I am now using <a href="http://jimsun.linxnet.com/postfix_contrib.html">pflogsumm</a> to get sanity checks on my mail server logs. 
+            It is a Perl script that parses the /var/log/mail.log file and produces a nice text report.
+        </p>
+        <figure>
+            <img src="../images/log-capture.PNG">
+            <figcaption>pflogsumm output</figcaption>
+        </figure>
+        <p>
+            The following line in my crontab file runs pflogsumm every night and sends me (ricky) an email of the output.
+        </p>
+        <figure>
+            <img src="../images/pflogsumm-crontab.PNG">
+            <figcaption>crontab entry</figcaption>
+        </figure>
+        <p>
+            Please note the above is one line (broken by terminal size), as in<br>
+            <code>08 04 * * * /usr/local/bin/pflogsumm.pl -d yesterday /var/log/mail.log 2>&1 | /usr/bin/mailx -s "daily mail stats" ricky</code>
+        </p>
+    </div>
+</body>
+
+</html>
