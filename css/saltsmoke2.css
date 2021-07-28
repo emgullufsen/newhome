@@ -1,0 +1,96 @@
+:root {
+    --c-stick-p: #ff7eb9;
+    --c-stick-pp: #ff65a3;
+    --c-stick-b: #7afcff;
+    --c-stick-y: #feff9c;
+    --c-stick-yy: #fff740;
+    --c-stick-cy: #FCF0AD;
+    --c-stick-g: #D0E068;
+    --c-stick-bb: #56C4E8;
+    --c-stick-yyy: #FFE476;
+    --ultra-0: #EF5AA1;
+    --ultra-1: #36A9CE;
+    --ultra-2: #D0E17D;
+    --ultra-3: #AE86BC;
+    --ultra-4: #FFDF25;
+    --pic0: #BAB7A9;
+    --pic1: #BFB4AF;
+    --pic2: #CDC4C1;
+    --pic3: #CFB69E;
+    --pic4: #D0AD87;
+    --bubba-pink: #BC8A93;
+    --bubba-mustard: #C3B83C;
+    --bubba-brown: #AD7E48;
+    --bubba-blue: #2D527F;
+    --bubba-green: #ADB842;
+    --bubba-lightblue: #9AC1D0;
+    --bubba-gray: #CFCFCF;
+}
+
+body {
+    background-color: var(--bubba-gray);
+    
+}
+
+.saltsmoke-index {
+    border: solid 3px;
+    border-radius: 5px;
+    background-color: ivory;
+}
+
+.saltsmoke-index-top {
+    border-color: var(--bubba-pink);
+}
+
+.saltsmoke-index-second {
+    border-color: var(--bubba-blue);
+    margin-right: 0.15rem;
+}
+
+.saltsmoke-index-third {
+    border-color: var(--ultra-3);
+    margin-left: 0.15rem;
+}
+
+.column {
+    margin-top: 0.3rem;
+}
+
+#ss-biz-card {
+    height: 100%;
+    text-align: center;
+}
+
+.main-headerz {
+    text-align: center;
+    color: var(--bubba-brown);
+}
+
+figcaption {
+    font-size: x-small;
+    text-align: center;
+    color: var(--bubba-blue);
+    font-weight: bolder;
+
+}
+
+.media-left {
+    width: 26%;
+}
+
+#sensor-image {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#evanne-image {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.post-header {
+    border-bottom-style: solid;
+    border-bottom-color: var(--bubba-blue);
+}
