@@ -24,7 +24,7 @@ include 'games-today-description.html';
 require "football-data-functions.php";
 
 $auth_header_array = array('X-AUTH-TOKEN: 1a65e8acccdb47949431186d2d4ea406');
-if (!is_null($_GET["DATE"])) {
+if (isset($_GET["DATE"])) {
 	$d_obj = DateTimeImmutable::createFromFormat('Y-m-d', $_GET["DATE"]);
 }
 else {
