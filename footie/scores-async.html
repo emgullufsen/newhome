@@ -6,7 +6,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%2290%22 font-size=%2290%22>&#x1f99c;</text></svg>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="scores-async.css" rel="stylesheet" type="text/css">
-    <script src="data-async.js"></script>
+    <!-- <script src="data-async.js"></script> -->
 </head>
 
 <body>
@@ -30,6 +30,7 @@
             
         </div>
         <div class="e_n_b">
+            <p>Note: despite the below, this page does nothing - I unsubscribed from API it'd used and too lazy to replace...</p>
             <p>
                 This page makes async requests to
                 <a href="https://rapidapi.com/api-sports/api/api-football">api-football</a> using
@@ -61,43 +62,7 @@
             </tbody>
         </table>
     </div>
-    <script>
-        
-        let t = document.getElementById("scoreboard_table");
-        
-        let today = new Date();
-
-        let tomorrow = new Date();
-        tomorrow.setDate(today.getDate() + 1);
-        
-        let yesterday = new Date();
-        yesterday.setDate(today.getDate() - 1);
-
-        getMatchesSetTableBody(today, t);
-
-        let button_div = document.getElementById("day_buttons");
-        let button_tomorrow = document.createElement('button');
-        let button_yesterday = document.createElement('button');
-
-        button_tomorrow.setAttribute('title', 'Next Day');
-        button_tomorrow.onclick = () => {
-            [today, tomorrow, yesterday].map(d => d.setDate(d.getDate() + 1))
-            getMatchesSetTableBody(today, t);
-        };
-        button_tomorrow.appendChild(document.createTextNode("Next Day \u27a1"));
-
-        button_yesterday.setAttribute('title', 'Previous Day');
-        button_yesterday.onclick = () => {
-            [today, tomorrow, yesterday].map(d => d.setDate(d.getDate() - 1))
-            getMatchesSetTableBody(today, t);
-        };
-        button_yesterday.appendChild(document.createTextNode("\u2b05 Previous Day"));
-
-        button_div.appendChild(button_yesterday);
-        button_div.appendChild(button_tomorrow);
-
-
-    </script>
+    <!-- <script src="scoreload.js" type="text/javascript"></script> -->
 </body>
 
 </html>
