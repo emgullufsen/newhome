@@ -27,6 +27,15 @@
     --bubba-gray: #CFCFCF;
 }
 
+@font-face {
+    font-family: eg-lydian;
+    src: url('../fonts/LYDIAN__.TTF');
+}
+
+.banner-time {
+    font-family: eg-lydian;
+}
+
 body {
     background-color: var(--bubba-gray);
     
