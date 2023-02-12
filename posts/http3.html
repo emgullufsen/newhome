@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>HTTP/3 </title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%2290%22 font-size=%2290%22>&#x1f47e;</text></svg>">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../css/bulma/css/bulma.css">
+    <link rel="stylesheet" href="../css/saltsmoke2.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@rickygully" />
+    <meta name="twitter:creator" content="@rickygully" />
+    <meta name="twitter:title" content="" />
+    <meta name="twitter:description" content="" />
+    <meta name="twitter:image" content="https://saltcakedsmokestacks.org/images/" />
+    <style>
+        html, body {
+            min-height: 100vh;
+            height: fit-content;
+        }
+        body {
+            background-color: var(--ultra-3);
+        }
+        .main-headerz a {
+            color: black;
+        }
+        .main-headerz a:hover {
+            color: var(--c-stick-yy);
+            text-decoration: wavy underline;
+        }
+        #thisbox {
+            border-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="section mainer">
+        <div class="container">
+
+            <div class="columns is-centered banner-time">
+                <div class="column is-two-thirds">
+                    <h1 class="title main-headerz"><a href="../newhome.html">RICK & CHIP</a></h1>
+                    <h2 class="subtitle main-headerz"><a href="../saltcakedsmokestacks.html">SALTCAKED SMOKESTACKS</a>
+                    </h2>
+                </div>
+            </div>
+            <div class="columns is-centered">
+                <div class="column is-two-thirds saltsmoke-index saltsmoke-index-top box" id="thisbox">
+                    <div class="content">
+                        <h2 class="subtitle post-header">
+                            👾 Now Serving HTTP/3!
+                        </h2>
+                        <p>
+                            I followed this <a href="https://quic.nginx.org/README">README</a> from nginx to compile +
+                            install
+                            a new binary with support for HTTP/3. It was pretty straightforward - I used the quictls
+                            fork of
+                            openssl as the ssl library when configuring/compiling nginx.
+                        </p>
+                        <p>
+                            It was fun to see QUIC being used in the wireshark packet captures, and of course to get the
+                            shiny
+                            pretty badges of approval from <a
+                                href="https://http3check.net/?host=rickysquid.org">http3check.net</a>.
+                        </p>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
